@@ -1,0 +1,70 @@
+*{
+    box-sizing:content-box; 
+}
+
+hr{
+    margin: 2% 0%;
+}
+
+body {
+    background-color: #dfdbb6;
+    
+}
+
+/* ----------  ---------- Main  ---------- ----------*/
+
+#main{
+    margin: 0% 10%;
+
+}
+
+#main h2{
+    font-size: 250%;
+    margin: 2%;
+    color: rgb(250, 30, 30);
+    font-family: 'Delicious Handrawn', cursive;
+}
+
+#main section{
+    background-color: gainsboro;
+    padding: 0.5%;
+}
+
+#main section{
+    background-color: #dfdbb6;
+    
+}
+
+.secion-de-cards{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.card{
+    text-align: center;
+    border: solid rgb(16, 170, 250);
+    margin: 0.5%;
+    padding: 0.5%;
+    background-color: burlywood;
+}
+
+.card img{
+     width: 80%;
+}
+
+.card h3{
+    font-size: 140%;
+    font-family: "Poppins", sans-serif;
+}
+
+.card p{
+    font-size: 130%;
+    font-family: "Poppins", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+
