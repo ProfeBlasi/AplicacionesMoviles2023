@@ -16,18 +16,16 @@ body {
 .form-nav{
     display: flex;
     justify-content: space-evenly;
+    margin: 1%;
 
 }
 
 .form-nav select{
-    margin: 0.5%;
     padding: 0.3%;
     border: solid rgb(16, 170, 250);
     font-size: 110%;
 
 }
-
-
 
 
 /* ----------  ---------- Main  ---------- ----------*/
