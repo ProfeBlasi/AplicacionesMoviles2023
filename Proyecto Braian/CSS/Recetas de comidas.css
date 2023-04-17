@@ -10,6 +10,26 @@ body {
     background-color: #dfdbb6;
 }
 
+
+/* ----------  ---------- Nav  ---------- ----------*/
+
+.form-nav{
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.form-nav select{
+    margin: 0.5%;
+    padding: 0.3%;
+    border: solid rgb(16, 170, 250);
+    font-size: 110%;
+
+}
+
+
+
+
 /* ----------  ---------- Main  ---------- ----------*/
 
 #main{
@@ -26,12 +46,14 @@ body {
 .section-card{
     display: flex;
     padding: 1%;
+    margin-bottom: 5%;
     border: solid rgb(16, 170, 250);
     background-color: burlywood;
 }
 
 .section-card img{
     margin: 1%;
+    width: 30%;
 }
 
 .section-card div{
