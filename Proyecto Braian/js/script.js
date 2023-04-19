@@ -1,12 +1,30 @@
-import { Header,Footer} from "./Componentes.js";
+const opciones = {
+    'Home': '../html/home.html',
+    'RecetaDe': '../html/recetaComida.html',
+    'Noticias': '../html/noticias.html',
+    'Formulario': '../html/formulario.html',
+};
 
-$(document).ready(function () {
-    $("#header").html(Header());
-    $("#footer").html(Footer());
-    Receta();
-    listaDeRecetas();
-})
+const appContainer = document.querySelector('#app');
 
+function cambiarVista(vista) {
+    appContainer.innerHTML = vista;
+}
+
+function cargarVista(vistaUrl) {
+    fetch(vistaUrl)
+        .then(response => response.text())
+        .then(html => cambiarVista(html));
+}
+
+window.addEventListener('hashchange', () => {
+    const opcion = location.hash.slice(1);
+    const vistaUrl = opciones[opcion];
+    cargarVista(vistaUrl);
+});
+
+const primeraVista = opciones[Object.keys(opciones)[0]];
+cargarVista(primeraVista);
 
 const Receta = () => {
     var url = `https://www.themealdb.com/api/json/v1/1/search.php?s=big%20mac`;
@@ -24,7 +42,7 @@ const Receta = () => {
                 $(".nombre-receta").text(elemento[0].strMeal);
                 $(".imagen-receta").attr("src", elemento[0].strMealThumb);
                 $(".descipcion-receta").text(elemento[0].strInstructions);
-                
+
                 $(".ingredientes").append(`<li>${elemento[0].strMeasure1} ${elemento[0].strIngredient1}</li>`);
                 $(".ingredientes").append(`<li>${elemento[0].strMeasure2} ${elemento[0].strIngredient2}</li>`);
                 $(".ingredientes").append(`<li>${elemento[0].strMeasure3} ${elemento[0].strIngredient3}</li>`);
@@ -77,9 +95,9 @@ const listaDeRecetas = () => {
                     <h3>${elemento[0].strMeal}</h3>
                     <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur distinctio in deserunt incidunt aliquam fugit ullam nulla repudiandae mollitia pariatur, ratione placeat enim reiciendis. Eum doloribus necessitatibus voluptate corporis ipsam.</p>
                 </div>`);
-                
+
             });
-        
+
 
         },
         error: function (xhr, status, error) {
