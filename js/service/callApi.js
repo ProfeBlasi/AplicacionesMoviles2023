@@ -4,3 +4,7 @@ export const get = (endpoint) => {
         url: endpoint
     });
 }
+
+export const message = (pon) => {
+    return pon + "Boca";
+}

@@ -8,18 +8,15 @@ const opciones = {
   const $main = $('#main-cointaner');
   
   function cargarVista(vistaUrl) {
-    console.log("Vista url " + vistaUrl);
     $main.load(vistaUrl);
   }
   
-  // Manejar los clics en los enlaces del menú
   $('.menu a').click(function(event) {
     event.preventDefault();
     var page = $(this).attr('href');
     cargarVista(opciones[page.substring(1)]);
   });
   
-  // Manejar el cambio de selección en el menú desplegable
   $('.mobile-menu').change(function() {
     var page = $(this).val();
     cargarVista(opciones[page.substring(1)]);
