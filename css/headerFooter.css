@@ -25,9 +25,9 @@
   
   @media only screen and (max-width: 768px) {
     /* Hide regular menu on smaller screens */
-    /* .menu {
+    .menu {
       display: none;
-    } */
+    }
     
     /* Display dropdown menu on smaller screens */
     .mobile-menu {

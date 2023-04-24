@@ -1,7 +1,27 @@
+.card-show-instructions {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.card-show-instructions.active {
+  background-color: #000;
+  color: #fff;
+}
+
 .card-instructions {
-    display: none;
-  }
-  
-  .card-instructions.visible {
-    display: block;
-  }
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  background-color: #f9f9f9;
+}
+
+.card-instructions.hidden {
+  display: none;
+}
+

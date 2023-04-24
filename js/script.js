@@ -1,3 +1,5 @@
+import { maquetarHome } from "./pages/home.js"
+
 const opciones = {
     'Home': '../html/home.html',
     'RecetaDe': '../html/recetaComida.html',
@@ -8,19 +10,22 @@ const opciones = {
   const $main = $('#main-cointaner');
   
   function cargarVista(vistaUrl) {
-    $main.load(vistaUrl);
+    var vista = vistaUrl.substring(1);
+    $main.load(opciones[vista]);
+    maquetarHome();
   }
   
   $('.menu a').click(function(event) {
     event.preventDefault();
     var page = $(this).attr('href');
-    cargarVista(opciones[page.substring(1)]);
+    cargarVista(page);
   });
   
   $('.mobile-menu').change(function() {
     var page = $(this).val();
-    cargarVista(opciones[page.substring(1)]);
+    cargarVista(page);
   });
-  
-  const primeraVista = opciones[Object.keys(opciones)[0]];
-  cargarVista(primeraVista);
+
+  $(document).ready(function() {
+    cargarVista('#Home');
+  });
