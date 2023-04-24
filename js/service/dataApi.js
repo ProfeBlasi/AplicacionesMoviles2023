@@ -1,24 +1,47 @@
 import { get } from "./callApi.js"
 
-const URL = 'https://www.themealdb.com/api/json/v1/1/'
+const API_URL = 'https://www.themealdb.com/api/json/v1/1/'
 
 const TRANSLATE_GOOGLE = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=es&dt=t&q='
 
-const aleatorio = URL + "random.php"
+const ALEATORIO = API_URL + "random.php"
+
+const OPTIONS_URL = API_URL + 'list.php?CHAR=lista';
+
+const SELECCION_URL = API_URL + 'filter.php?CHAR=lista';
+
+const GET_BY_ID = API_URL + 'lookup.php?i='
 
 export const getRandom = () => {
-    return get(aleatorio);
+  return get(ALEATORIO);
 }
 
 export const traducir = async (texto) => {
-    const oraciones = texto.split('. ');
-    const traducciones = [];
-    
-    for (const oracion of oraciones) {
-      const respuesta = await fetch(TRANSLATE_GOOGLE + encodeURIComponent(oracion));
-      const json = await respuesta.json();
-      traducciones.push(json[0][0][0]);
-    }
-    
-    return traducciones.join('. ');
-  };
+  const oraciones = texto.split('. ');
+  const traducciones = [];
+
+  for (const oracion of oraciones) {
+    const respuesta = await fetch(TRANSLATE_GOOGLE + encodeURIComponent(oracion));
+    const json = await respuesta.json();
+    traducciones.push(json[0][0][0]);
+  }
+
+  return traducciones.join('. ');
+};
+
+export const getCategories = (caracter) => {
+  let newCATEGORIES_URL = OPTIONS_URL.replace("CHAR", caracter);
+  return get(newCATEGORIES_URL);;
+};
+
+export const getByOption = (caracter, option) => {
+  let newCATEGORIES_URL = SELECCION_URL
+  .replace("CHAR", caracter)
+  .replace("lista", option);
+  console.log(newCATEGORIES_URL);
+  return get(newCATEGORIES_URL);
+}
+
+export const getElementById = (id) => {
+  return get(GET_BY_ID + id);
+}
