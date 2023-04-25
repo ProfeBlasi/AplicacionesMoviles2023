@@ -38,7 +38,6 @@ export const getByOption = (caracter, option) => {
   let newCATEGORIES_URL = SELECCION_URL
   .replace("CHAR", caracter)
   .replace("lista", option);
-  console.log(newCATEGORIES_URL);
   return get(newCATEGORIES_URL);
 }
 

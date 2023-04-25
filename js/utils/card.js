@@ -29,13 +29,59 @@ const cardCustom = (image, imageAlt, title, instructions) => {
 
 export const listCardContainer = (container, data) => {
     data.then(data => {
-        const cardContainer = $(`card-opcionCategorias`);
+        const cardContainer = $('.card-containerOpciones');
+        cardContainer.empty();
         data.meals.forEach(async element => {
-            console.log(getElementById(element.idMeal));
-            //const titulo = await traducir(meal.strMeal);
-            //const instrucciones = await traducir(meal.strInstructions);
-            //var cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
-            //cardContainer.html(cardHome);
+            const receta = await getElementById(element.idMeal);
+            const meal = receta.meals[0];
+            console.log(meal.strMeal);
+            const titulo = await traducir(meal.strMeal);
+            const instrucciones = await traducir(meal.strInstructions);
+            var cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
+            cardContainer.append(cardHome);
         });
     });
-} 
+}
+
+
+
+/*
+export const listCardContainer = (container, data) => {
+    data.then(data => {
+        const cardContainer = $(`.card-containerOpciones[data-container=${container}]`);
+        let array = [];
+
+        data.meals.forEach(function (valor, indice) {
+            console.log("El valor en el índice " + indice + " es " + valor);
+        });
+        let currentMealIndex = 0;
+        const showCurrentMeal = async () => {
+            const element = meals[currentMealIndex];
+
+            const receta = await getElementById(element.idMeal);
+            const meal = receta.meals[0];
+            const titulo = await traducir(meal.strMeal);
+            const instrucciones = await traducir(meal.strInstructions);
+            const cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
+            cardContainer.empty().append(cardHome);
+        };
+
+        // Mostrar la primera receta
+        showCurrentMeal();
+
+        // Agregar eventos de clic a los botones de cursor o flecha
+        $('.btn-prev').on('click', () => {
+            if (currentMealIndex > 0) {
+                currentMealIndex--;
+                showCurrentMeal();
+            }
+        });
+
+        $('.btn-next').on('click', () => {
+            if (currentMealIndex < meals.length - 1) {
+                currentMealIndex++;
+                showCurrentMeal();
+            }
+        });
+    });
+}*/
