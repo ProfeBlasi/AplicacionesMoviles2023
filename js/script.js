@@ -1,6 +1,6 @@
 import { maquetarHome } from "./pages/home.js"
 import { maquetarReceta } from "./pages/receta.js"
-import { createMap } from "./pages/formulario.js"
+//import { createMap } from "./pages/formulario.js"
 import { maquetarDegustacion } from "./pages/degustacion.js"
 
 const $main = $('#main-cointaner');
@@ -22,7 +22,7 @@ function cargarVista(vistaUrl) {
         maquetarReceta();
         break;
       case "Contacto":
-        createMap();
+        //createMap();
         break;
       case "Degustacion":
         maquetarDegustacion();
@@ -62,93 +62,7 @@ $(document).ready(function () {
   });
 });
 
-$(document).ready(function () {
-  $('#ver-pedido').click(function () {
-      // Cambiar texto del botón
-      $(this).text('Seguir comprando');
-      const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
-      const resumenPedido = $('.section-container');
-      resumenPedido.html('');
-      let total = 0;
 
-      // Crear tabla dinámicamente
-      const tabla = document.createElement('table');
-      tabla.classList.add('table');
-
-      // Crear cabecera de la tabla
-      const cabecera = document.createElement('thead');
-      const filaCabecera = document.createElement('tr');
-      const encabezados = ['Comida', 'Precio', 'Cantidad'];
-
-      encabezados.forEach(function (encabezado) {
-          const th = document.createElement('th');
-          const texto = document.createTextNode(encabezado);
-          th.appendChild(texto);
-          filaCabecera.appendChild(th);
-      });
-
-      cabecera.appendChild(filaCabecera);
-      tabla.appendChild(cabecera);
-
-      // Crear cuerpo de la tabla
-      const cuerpo = document.createElement('tbody');
-
-      purchases.forEach(function (purchase) {
-          const fila = document.createElement('tr');
-
-          const celdaComida = document.createElement('td');
-          const textoComida = document.createTextNode(purchase.meal);
-          celdaComida.appendChild(textoComida);
-          fila.appendChild(celdaComida);
-
-          const celdaPrecio = document.createElement('td');
-          const textoPrecio = document.createTextNode(purchase.precio);
-          celdaPrecio.appendChild(textoPrecio);
-          fila.appendChild(celdaPrecio);
-
-          const celdaCantidad = document.createElement('td');
-          const textoCantidad = document.createTextNode(purchase.cantidad);
-          celdaCantidad.appendChild(textoCantidad);
-          fila.appendChild(celdaCantidad);
-
-          cuerpo.appendChild(fila);
-
-          total += purchase.precio * purchase.cantidad;
-      });
-      tabla.appendChild(cuerpo);
-      resumenPedido.append(tabla);
-      resumenPedido.append('Precio total: ' + total);
-
-      // Agregar botón 'comprar'
-      const comprarBtn = $('<button>Comprar</button>');
-      comprarBtn.addClass('table');
-      resumenPedido.append(comprarBtn);
-      comprarBtn.click(function () {
-          localStorage.removeItem('purchases');
-          if (total === 0) {
-              Swal.fire(
-                  'Ohoo',
-                  'No tenias comidas en tu pedido',
-                  'question'
-              )
-          }
-          else {
-              Swal.fire(
-                  'Genial',
-                  'Su compra por el monto de $' + total + ' se realizo correctamente',
-                  'success'
-              );
-          }
-          resumenPedido.html('');
-          comprarBtn.hide();
-          $('#ver-pedido').text('Ver mi pedido').show();
-      });
-      $('#ver-pedido').after(comprarBtn);
-
-      // Ocultar contenido HTML dinámico
-      $(this).hide();
-  });
-});
 
 /*
 

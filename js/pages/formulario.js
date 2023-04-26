@@ -1,3 +1,4 @@
+/*
 export const createMap = () => {
     var mapOptions = {
         zoom: 14,
@@ -15,4 +16,4 @@ export const createMap = () => {
         map: map,
     });
 }
-
+*/
