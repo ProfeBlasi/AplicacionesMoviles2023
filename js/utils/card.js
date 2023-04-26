@@ -1,11 +1,16 @@
 import { traducir, getElementById } from "../service/dataApi.js";
 
-export const cardContainer = (container, data) => {
+export const cardContainer = (container, data, degustacion) => {
     data.then(async data => {
         const meal = data.meals[0];
         const titulo = await traducir(meal.strMeal);
         const instrucciones = await traducir(meal.strInstructions);
-        var cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
+        var cardHome = null;
+        if(degustacion){
+            cardHome = cardCustomDegustacion(meal.strMealThumb, meal.strMeal, titulo, meal.idMeal-52000);
+        }else{
+            cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
+        }
         const cardContainer = $(`.card-container[data-container=${container}]`);
         cardContainer.html(cardHome);
     });
@@ -34,7 +39,6 @@ export const listCardContainer = (container, data) => {
         data.meals.forEach(async element => {
             const receta = await getElementById(element.idMeal);
             const meal = receta.meals[0];
-            console.log(meal.strMeal);
             const titulo = await traducir(meal.strMeal);
             const instrucciones = await traducir(meal.strInstructions);
             var cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
@@ -43,45 +47,18 @@ export const listCardContainer = (container, data) => {
     });
 }
 
-
-
-/*
-export const listCardContainer = (container, data) => {
-    data.then(data => {
-        const cardContainer = $(`.card-containerOpciones[data-container=${container}]`);
-        let array = [];
-
-        data.meals.forEach(function (valor, indice) {
-            console.log("El valor en el índice " + indice + " es " + valor);
-        });
-        let currentMealIndex = 0;
-        const showCurrentMeal = async () => {
-            const element = meals[currentMealIndex];
-
-            const receta = await getElementById(element.idMeal);
-            const meal = receta.meals[0];
-            const titulo = await traducir(meal.strMeal);
-            const instrucciones = await traducir(meal.strInstructions);
-            const cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
-            cardContainer.empty().append(cardHome);
-        };
-
-        // Mostrar la primera receta
-        showCurrentMeal();
-
-        // Agregar eventos de clic a los botones de cursor o flecha
-        $('.btn-prev').on('click', () => {
-            if (currentMealIndex > 0) {
-                currentMealIndex--;
-                showCurrentMeal();
-            }
-        });
-
-        $('.btn-next').on('click', () => {
-            if (currentMealIndex < meals.length - 1) {
-                currentMealIndex++;
-                showCurrentMeal();
-            }
-        });
+const cardCustomDegustacion = (image, imageAlt, title, price) => {
+    const card = $('<div>').addClass('card');
+    const imageDiv = $('<img>').addClass('card-image').attr('src', image).attr('alt', imageAlt);
+    const titleDiv = $('<h2>').addClass('card-title').text(title);
+    const priceDiv = $('<div>').addClass('card-price').text(`Precio: $${price}`);
+    const buyButton = $('<button>').addClass('card-buy').text('Agregar al carrito').on('click', function () {
+        const purchase = { meal: title,precio: price };
+        const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
+        purchases.push(purchase);
+        localStorage.setItem('purchases', JSON.stringify(purchases));
+        alert('Compra realizada con éxito');
     });
-}*/
+    card.append(imageDiv).append(titleDiv).append(priceDiv).append(buyButton);
+    return card;
+  };

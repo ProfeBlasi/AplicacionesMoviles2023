@@ -1,46 +1,50 @@
 import { maquetarHome } from "./pages/home.js"
 import { maquetarReceta } from "./pages/receta.js"
 import { createMap } from "./pages/formulario.js"
+import { maquetarDegustacion } from "./pages/degustacion.js"
 
 const $main = $('#main-cointaner');
-  const opciones = {
-    'Home': '../html/home.html',
-    'RecetaDe': '../html/recetaComida.html',
-    'Noticias': '../html/noticias.html',
-    'Contacto': '../html/contacto.html',
-  };
+const opciones = {
+  'Home': '../html/home.html',
+  'RecetaDe': '../html/recetaComida.html',
+  'Degustacion': '../html/degustacion.html',
+  'Contacto': '../html/contacto.html',
+};
 
-  function cargarVista(vistaUrl) {
-    var vista = vistaUrl.substring(1);
-    $main.load(opciones[vista],function() {
-      switch (vista) {
-        case "Home":
-          maquetarHome();
-          break;
-        case "RecetaDe":
-          maquetarReceta();
-          break;
-        case "Contacto":
-          createMap();
-          break;
-      }
-    });
-  }
-
-  $('.menu a').click(function (event) {
-    event.preventDefault();
-    var page = $(this).attr('href');
-    cargarVista(page);
+function cargarVista(vistaUrl) {
+  var vista = vistaUrl.substring(1);
+  $main.load(opciones[vista], function () {
+    switch (vista) {
+      case "Home":
+        maquetarHome();
+        break;
+      case "RecetaDe":
+        maquetarReceta();
+        break;
+      case "Contacto":
+        createMap();
+        break;
+      case "Degustacion":
+        maquetarDegustacion();
+        break;
+    }
   });
+}
 
-  $('.mobile-menu').change(function () {
-    var page = $(this).val();
-    cargarVista(page);
-  });
+$('.menu a').click(function (event) {
+  event.preventDefault();
+  var page = $(this).attr('href');
+  cargarVista(page);
+});
 
-  $(document).ready(function () {
-    cargarVista('#Home');
-  });
+$('.mobile-menu').change(function () {
+  var page = $(this).val();
+  cargarVista(page);
+});
+
+$(document).ready(function () {
+  cargarVista('#Degustacion');
+});
 
 $(document).ready(function () {
   $("#enviar").click(function (event) {

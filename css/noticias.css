@@ -1,125 +1,25 @@
-*{
-    box-sizing:content-box; 
-}
-
-hr{
-    margin: 2% 0%;
-}
-
-body {
-    background-color: #dfdbb6;
-    
-}
-
-/* ----------  ---------- Main  ---------- ----------*/
-
-#main{
-    margin: 0% 10%;
-
-}
-
-#main section{
-    text-align: center;
-}
-
-.section-1 h2{
-    font-family: "Poppins", sans-serif;
-    /*font-family: 'Delicious Handrawn', cursive;*/
-    font-size: 600%;
-    padding: 0%;
-    margin: 0%;
-
-}
-
-.section-1 h3{
-    font-family: 'Roboto Serif', serif;
-    font-size: 130%;
-    margin: 3%;
-}
-
-
-.section-2{
-    padding: 2%;
-
-}
-
-.articulo-1 {
-    border: solid black;
-    background-color: rgba(222, 184, 135, 0.66);
-    margin: 2%;
-}
-
-.articulo-1 img{
-    margin: 2%;
-    width: 70%;
-}
-
-.articulo-1 h2{
-    font-family: 'Roboto Serif', serif;
-    font-size: 300%;
-}
-
-.articulo-1 h4{
-    font-family: 'Roboto Serif', serif;
-    font-size: 130%;
-}
-
-.articulo-2 {
+.card-buy-form {
     display: flex;
-    border: solid black;
-    margin-bottom: 1%;
-    margin-top: 2%;
-    
-}
-
-.div-articulo-2 {
-    border: solid green;
-    background-color: rgba(222, 184, 135, 0.66);
-    margin: 1%;
-    padding: 1%;
-}
-
-.div-articulo-2 img{
-    width: 60%;
-}
-
-.div-articulo-2 h2{
-    font-family: 'Roboto Serif', serif;
-    font-size: 200%;
-}
-
-.div-articulo-2 h4{
-    font-family: 'Roboto Serif', serif;
-    font-size: 120%;
-}
-
-.articulo-4{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    border: solid black;
-    margin-bottom: 1%;
-    margin-top: 2%;
-}
-
-.div-articulo-4 {
-    border: solid green;
-    background-color: rgba(222, 184, 135, 0.66);
-    margin: 2%;
-    padding: 1%;
-}
-
-.div-articulo-4 img{
-    width: 50%;
-}
-
-.div-articulo-4 h2{
-    font-family: 'Roboto Serif', serif;
-    font-size: 150%;
-}
-
-.div-articulo-4 h4{
-    font-family: 'Roboto Serif', serif;
-    font-size: 110%;
-}
-
-
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .card-buy-form label {
+    font-weight: bold;
+  }
+  
+  .card-buy-form input[type="text"],
+  .card-buy-form input[type="email"] {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .card-buy-submit {
+    background-color: #008000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
