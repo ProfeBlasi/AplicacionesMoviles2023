@@ -11,6 +11,7 @@
   .menu li a {
     display: block;
     padding: 10px;
+  
   }
   
   /* Mobile menu styles */
@@ -72,6 +73,9 @@ header {
   .menu li a {
     color: #333;
     text-decoration: none;
+    font-size: 120%;
+    font-weight: 800;
+    font-family: "Poppins", sans-serif;
   }
   
   /* Estilos para pantallas menores a 768px */
@@ -140,7 +144,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f2f2f2;
+    background-color: chocolate;
     padding: 20px;
     font-size: 14px;
   }
@@ -153,8 +157,14 @@ header {
   
   .div-footer img {
     margin: 0 10px;
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
+  }
+
+  #footer h4{
+    font-size: 150%;
+    font-weight: 800;
+    font-family: "Poppins", sans-serif;
   }
   
   .informacion {
@@ -165,6 +175,8 @@ header {
   
   .informacion h4 {
     margin: 10px 20px;
+    
+
   }
   
   @media (min-width: 768px) {
