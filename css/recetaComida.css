@@ -131,3 +131,16 @@ a{
   }
 
 }
+
+@media (max-width: 850px) and (min-width: 481px) {
+  .card-containerOpciones{
+    display: flex;
+  
+  }
+  
+ .card{
+  max-width: 40%;
+
+ }
+
+}
