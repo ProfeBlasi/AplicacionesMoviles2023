@@ -6,9 +6,9 @@ export const cardContainer = (container, data, degustacion) => {
         const titulo = await traducir(meal.strMeal);
         const instrucciones = await traducir(meal.strInstructions);
         var cardHome = null;
-        if(degustacion){
-            cardHome = cardCustomDegustacion(meal.strMealThumb, meal.strMeal, titulo, meal.idMeal-52000);
-        }else{
+        if (degustacion) {
+            cardHome = cardCustomDegustacion(meal.strMealThumb, meal.strMeal, titulo, meal.idMeal);
+        } else {
             cardHome = cardCustom(meal.strMealThumb, meal.strMeal, titulo, instrucciones);
         }
         const cardContainer = $(`.card-container[data-container=${container}]`);
@@ -47,18 +47,29 @@ export const listCardContainer = (container, data) => {
     });
 }
 
-const cardCustomDegustacion = (image, imageAlt, title, price) => {
+const cardCustomDegustacion = (image, imageAlt, title, id) => {
     const card = $('<div>').addClass('card');
     const imageDiv = $('<img>').addClass('card-image').attr('src', image).attr('alt', imageAlt);
     const titleDiv = $('<h2>').addClass('card-title').text(title);
-    const priceDiv = $('<div>').addClass('card-price').text(`Precio: $${price}`);
+    const precio = id - 52000;
+    const priceDiv = $('<div>').addClass('card-price').text(`Precio: $${precio}`);
     const buyButton = $('<button>').addClass('card-buy').text('Agregar al carrito').on('click', function () {
-        const purchase = { meal: title,precio: price };
+        const purchase = { id: id, meal: title, precio: precio, cantidad: 1 };
         const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
-        purchases.push(purchase);
+        // Busca una compra con el mismo id y actualiza la cantidad
+        const existingPurchase = purchases.find(p => p.id === id);
+        if (existingPurchase) {
+            existingPurchase.cantidad++;
+        } else {
+            purchases.push(purchase);
+        }
         localStorage.setItem('purchases', JSON.stringify(purchases));
-        alert('Compra realizada con éxito');
+        Swal.fire(
+            'Buena eleccion!',
+            title + ' se agrego a su pedido correctamente',
+            'success'
+          );
     });
     card.append(imageDiv).append(titleDiv).append(priceDiv).append(buyButton);
     return card;
-  };
+};
