@@ -34,6 +34,7 @@ function cargarVista(vistaUrl) {
 $('.menu a').click(function (event) {
   event.preventDefault();
   var page = $(this).attr('href');
+  console.log(page);
   cargarVista(page);
 });
 
@@ -47,11 +48,20 @@ $(document).ready(function () {
 });
 
 $(document).on('click', '#pedido', function (event) {
-  // Cambiar texto del botón
-  $(this).text('Seguir comprando');
+
   const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
   const resumenPedido = $('.section-container');
-  resumenPedido.html('');
+  const verPedido = $('#pedido');
+  verPedido.hide();
+  const cardContainer1 = $('.card-container[data-container=1]');
+  const cardContainer2 = $('.card-container[data-container=2]');
+  const cardContainer3 = $('.card-container[data-container=3]');
+  const cardContainer4 = $('.card-container[data-container=4]');
+  cardContainer1.empty();
+  cardContainer2.empty();
+  cardContainer3.empty();
+  cardContainer4.empty();
+
   let total = 0;
 
   // Crear tabla dinámicamente
@@ -101,10 +111,11 @@ $(document).on('click', '#pedido', function (event) {
   tabla.appendChild(cuerpo);
   resumenPedido.append(tabla);
   resumenPedido.append('Precio total: ' + total);
-
-  // Agregar botón 'comprar'
+  const seguirComprando = $('<button>Seguir comprando</button>');
   const comprarBtn = $('<button>Comprar</button>');
-  comprarBtn.addClass('table');
+  comprarBtn.addClass('btnCompra');
+  seguirComprando.addClass('btnSeguirComprando');
+  resumenPedido.append(seguirComprando);
   resumenPedido.append(comprarBtn);
   comprarBtn.click(function () {
     localStorage.removeItem('purchases');
@@ -113,22 +124,31 @@ $(document).on('click', '#pedido', function (event) {
         'Ohoo',
         'No tenias comidas en tu pedido',
         'question'
-      )
+      );
+      resumenPedido.empty();
+      comprarBtn.hide();
+      $main.load('../html/degustacion.html');
+      maquetarDegustacion();
     }
-    Swal.fire(
-      'Genial',
-      'Su compra por el monto de $' + total + ' se realizo correctamente',
-      'success'
-    );
-    resumenPedido.html('');
-    maquetarDegustacion();
-    comprarBtn.hide();
-    $('#ver-pedido').text('Ver mi pedido').show();
+    else {
+      Swal.fire(
+        'Genial',
+        'Su compra por el monto de $' + total + ' se realizo correctamente',
+        'success'
+      );
+      resumenPedido.empty();
+      comprarBtn.hide();
+      $main.load('../html/degustacion.html');
+      maquetarDegustacion();
+    }
   });
-  $('#ver-pedido').after(comprarBtn);
 
-  // Ocultar contenido HTML dinámico
-  $(this).hide();
+  seguirComprando.click(function () {
+    resumenPedido.empty();
+    comprarBtn.hide();
+    $main.load('../html/degustacion.html');
+    maquetarDegustacion();
+  });
 });
 
 
