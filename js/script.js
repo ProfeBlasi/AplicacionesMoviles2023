@@ -1,6 +1,6 @@
 import { maquetarHome } from "./pages/home.js"
 import { maquetarReceta } from "./pages/receta.js"
-//import { createMap } from "./pages/formulario.js"
+import { createMap } from "./pages/formulario.js"
 import { maquetarDegustacion } from "./pages/degustacion.js"
 
 const $main = $('#main-cointaner');
@@ -22,7 +22,7 @@ function cargarVista(vistaUrl) {
         maquetarReceta();
         break;
       case "Contacto":
-        //createMap();
+        createMap();
         break;
       case "Degustacion":
         maquetarDegustacion();
@@ -44,13 +44,13 @@ $('.mobile-menu').change(function () {
 });
 
 $(document).ready(function () {
-  cargarVista('#Degustacion');
+  cargarVista('#Home');
 });
 
 $(document).on('click', '#pedido', function (event) {
 
   const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
-  const resumenPedido = $('.section-container');
+  const resumenPedido = $('.section-container-degustacion');
   const verPedido = $('#pedido');
   verPedido.hide();
   const cardContainer1 = $('.card-container[data-container=1]');
@@ -71,7 +71,7 @@ $(document).on('click', '#pedido', function (event) {
   // Crear cabecera de la tabla
   const cabecera = document.createElement('thead');
   const filaCabecera = document.createElement('tr');
-  const encabezados = ['Comida', 'Precio', 'Cantidad'];
+  const encabezados = ['Comida', 'Precio unitario', 'Cantidad'];
 
   encabezados.forEach(function (encabezado) {
     const th = document.createElement('th');
@@ -95,7 +95,7 @@ $(document).on('click', '#pedido', function (event) {
     fila.appendChild(celdaComida);
 
     const celdaPrecio = document.createElement('td');
-    const textoPrecio = document.createTextNode(purchase.precio);
+    const textoPrecio = document.createTextNode('$ '+purchase.precio);
     celdaPrecio.appendChild(textoPrecio);
     fila.appendChild(celdaPrecio);
 
@@ -110,7 +110,9 @@ $(document).on('click', '#pedido', function (event) {
   });
   tabla.appendChild(cuerpo);
   resumenPedido.append(tabla);
-  resumenPedido.append('Precio total: ' + total);
+  var nuevoSpan = document.createElement("span");
+  nuevoSpan.append('Precio total: $' + total);
+  resumenPedido.append(nuevoSpan);
   const seguirComprando = $('<button>Seguir comprando</button>');
   const comprarBtn = $('<button>Comprar</button>');
   comprarBtn.addClass('btnCompra');
@@ -153,9 +155,7 @@ $(document).on('click', '#pedido', function (event) {
 
 
 
-$(document).ready(function () {
-  $("#enviar").click(function (event) {
-    console.log("Aca");
+$(document).on('click', '#enviar', function (event) {
     var error = false;
     $(".error").text("");
     $("#formulario input[required], #formulario textarea[required]").foreach(function () {
@@ -164,8 +164,11 @@ $(document).ready(function () {
         error = true;
       }
     });
-    if (error) {
-      event.preventDefault();
+    if(!error) {
+      Swal.fire(
+        'Genial',
+        'Su compra por el monto de realizo correctamente',
+        'success'
+      );
     }
   });
-});

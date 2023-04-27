@@ -19,10 +19,12 @@
   border: 1px solid #000;
   border-radius: 0.25rem;
   background-color: #f9f9f9;
+  text-align: justify;
 }
 
 .card-instructions.hidden {
   display: none;
+  text-align: justify;
 }
 
 .secion-de-cards{
@@ -74,14 +76,16 @@
 }
 
 .card-info button{
-  width: 40%;
-  margin-left: 30%;
-  margin-bottom: 3%;
-  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: #007bff;
   color: white;
-  background-color: chocolate;
-  border-radius: 10%;
-
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 70%;
+  margin-bottom: 10px;
 }
 
 .card-info h2{

@@ -5,15 +5,16 @@
 .card-container .card{
     flex-direction: row;
     text-align: center;
-    max-width: 70%;
-    margin-left: 15%;
-    
+    max-width:100%;
+    display:flex;
 }
 
 .card-container .card img{
     width: 30%;
+    max-height: 400px;
     margin: 2%;
-    
+    align-items: center;
+    justify-content: center;
 }
 
 .card-container .card-info{
@@ -33,7 +34,6 @@
 
 .card-container .card-info p{
     display: block;
-    background-color: burlywood;
     
 }
 
