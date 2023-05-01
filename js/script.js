@@ -34,7 +34,6 @@ function cargarVista(vistaUrl) {
 $('.menu a').click(function (event) {
   event.preventDefault();
   var page = $(this).attr('href');
-  console.log(page);
   cargarVista(page);
 });
 
@@ -95,7 +94,7 @@ $(document).on('click', '#pedido', function (event) {
     fila.appendChild(celdaComida);
 
     const celdaPrecio = document.createElement('td');
-    const textoPrecio = document.createTextNode('$ '+purchase.precio);
+    const textoPrecio = document.createTextNode('$ ' + purchase.precio);
     celdaPrecio.appendChild(textoPrecio);
     fila.appendChild(celdaPrecio);
 
@@ -153,8 +152,27 @@ $(document).on('click', '#pedido', function (event) {
   });
 });
 
+$(document).on('click', '#enviar', function (event) {
+  event.preventDefault();
+  var error = false;
+  $(".error").text("");
+  $("#formulario input[required], #formulario textarea[required]").each(function () {
+    if ($(this).val() == "") {
+      $(this).next(".error").text("Este campo es obligatorio");
+      error = true;
+    }
+    else {
+      Swal.fire(
+        'Felicitaciones',
+        'Usted cargo su receta correctamente',
+        'success'
+      );
+      $('#formulario').get(0).reset();
+    }
+  });
+});
 
-
+/*
 $(document).on('click', '#enviar', function (event) {
     var error = false;
     $(".error").text("");
@@ -172,3 +190,4 @@ $(document).on('click', '#enviar', function (event) {
       );
     }
   });
+  */
