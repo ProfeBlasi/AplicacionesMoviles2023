@@ -1,5 +1,6 @@
 import { selectFilter } from "./pages/receta.js"
 import { initMap, validarFormulario } from "./pages/contacto.js"
+import { compra } from "./pages/degustacion.js"
 
 const $main = $('#main-cointaner');
 const opciones = {
@@ -23,6 +24,7 @@ function cargarVista(vistaUrl) {
         validarFormulario();
         break;
       case "Degustacion":
+        compra();
         break;
     }
   });

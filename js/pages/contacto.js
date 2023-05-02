@@ -26,14 +26,14 @@ export const validarFormulario = () => {
                 $(this).next(".error").text("Este campo es obligatorio");
                 error = true;
             }
-            else {
-                Swal.fire(
-                    'Felicitaciones',
-                    'Usted cargo su receta correctamente',
-                    'success'
-                );
-                $('#formulario').get(0).reset();
-            }
         });
+        if(!error){
+            Swal.fire(
+                'Felicitaciones',
+                'Usted cargo su receta correctamente',
+                'success'
+            );
+            $('#formulario').get(0).reset();
+        }
     });
 }

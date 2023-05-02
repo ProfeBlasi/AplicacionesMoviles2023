@@ -61,7 +61,7 @@ padding: 10px;
 font-size: 16px;
 font-weight: bold;
 color: #fff;
-background-color: #007bff;
+background-color:rgb(101,92,201);
 border: none;
 border-radius: 5px;
 cursor: pointer;
@@ -69,7 +69,7 @@ margin: 20px auto 0;
 }
 
 #enviar:hover {
-background-color: #0062cc;
+background-color: rgb(101,92,201);
 }
 
 #descripcion {
@@ -137,3 +137,8 @@ height: 100px;
   margin: 60px;
   }
  }
+
+ textarea {
+  resize: none;
+}
+

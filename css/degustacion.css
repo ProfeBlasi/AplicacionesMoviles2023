@@ -1,0 +1,176 @@
+/* Estilos de la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid chocolate;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #f5f5f5;
+}
+
+/* Estilos de la tabla responsive */
+.table-responsive {
+  overflow-x: auto;
+}
+
+@media (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ddd;
+  }
+
+  .table-responsive table {
+    margin-bottom: 0;
+    background-color: #fff;
+  }
+
+  .table-responsive th,
+  .table-responsive td {
+    white-space: nowrap;
+    overflow-x: hidden;
+  }
+
+  .table-responsive th:first-child,
+  .table-responsive td:first-child {
+    padding-left: 16px;
+  }
+
+  .table-responsive th:last-child,
+  .table-responsive td:last-child {
+    padding-right: 16px;
+  }
+
+  .table-responsive th,
+  .table-responsive td,
+  .table-responsive th > div,
+  .table-responsive td > div {
+    text-align: left;
+    font-size: 14px;
+  }
+
+  .table-responsive td {
+    display: block;
+    padding: 6px 12px;
+  }
+
+  .table-responsive td:last-child {
+    border-bottom: 0;
+  }
+}
+
+.purchase-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.purchase-buttons button {
+  font-size: 1.2rem;
+  padding: 10px;
+  background-color: rgb(101,92,201);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 25%;
+  margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+  .purchase-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .purchase-buttons button {
+    width: 50%;
+    margin: 10px 0;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  /* Selecciona la segunda columna (índice 1) y la oculta */
+  table tbody td:nth-child(2),
+  table thead th:nth-child(2) {
+    display: none;
+  }
+}
+
+td img {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-compra {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-compra img {
+  width: 32.4%;
+  height: auto;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.container-precio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.resumen-total-precio {
+  flex: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+button.comprar {
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 25%;
+  margin: 0 10px;
+  background-color: rgb(48,133,214);
+  color: white;
+}
+
+button.cancelar {
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 25%;
+  margin: 0 10px;
+  background-color: red;
+  color: white;
+}
+
