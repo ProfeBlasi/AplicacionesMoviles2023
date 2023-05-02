@@ -1,0 +1,129 @@
+.card-show-instructions, .card-buy {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .card-show-instructions.active {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .card-instructions {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 0.25rem;
+    background-color: #f9f9f9;
+    text-align: justify;
+  }
+  
+  .card-instructions.hidden {
+    display: none;
+  }
+  
+  
+  .secion-de-cards {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .titulo-seccion-1 {
+    text-align: center;
+    font-size: 250%;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .card-containerOpciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    text-align: center;
+    border: solid rgb(16, 170, 250);
+    background-color: burlywood;
+    display: flex;
+    flex-direction: column;
+    max-width: 25%;
+    margin: 2%;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+  }
+  
+  
+  .card img {
+    width: 75%;
+    margin: auto;
+    margin-top: 20px;
+  }
+  
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+  
+  .card-info button {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    align-self: center;
+    cursor: pointer;
+    width: 70%;
+    margin-bottom: 10px;
+  }
+  
+  .card-info h2 {
+    font-size: 140%;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .card-info p {
+    font-size: 130%;
+    font-family: "Poppins", sans-serif;
+    margin: 2%;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  #opcionCategorias {
+    padding: 0.3%;
+    margin-left: 5%;
+    border: solid chocolate;
+  }
+  
+  @media (max-width: 654px) {
+    .card-containerOpciones {
+      display: block;
+    }
+  
+    .card {
+      max-width: 100%;
+      margin: 2%;
+    }
+  
+    #opcionCategorias {
+      margin-left: 35%;
+      margin-bottom: 5%;
+      padding: 1.5%;
+      border: solid  chocolate;
+    }
+  }
+  
+  @media (max-width: 1437px) and (min-width: 655px) {
+    .card {
+      max-width: 45%;
+    }
+  }
+  

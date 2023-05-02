@@ -1,19 +1,7 @@
-*{
-    box-sizing:content-box; 
-}
-
-hr{
-    margin: 2% 0%;
-}
-
 body {
-    background-color: #dfdbb6;
-    
+    background-color: #dfdbb6;   
 }
 
-/* ----------  ---------- Home  ---------- ----------*/
-
-
-
-
-
+main {
+  min-height: calc(84vh - 140px); /* ajustar 140px al tamaño del footer */
+}
