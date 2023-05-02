@@ -1,7 +1,6 @@
 import { translate, getElementById } from "../service/dataApi.js";
-
 const card = (image, imageAlt, title, instructions, id) => {
-    const card = $('<div>').addClass('card');
+    const card = $('<article>').addClass('card');
     const imageDiv = $('<img>').addClass('card-image').attr('src', image).attr('alt', imageAlt);
     card.append(imageDiv);
     const info = $('<div>').addClass('card-info');
