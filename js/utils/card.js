@@ -32,13 +32,21 @@ const card = (image, imageAlt, title, instructions, id) => {
             if (result.isConfirmed) {
                 const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
                 // Busca una compra con el mismo id y actualiza la cantidad
-                const existingPurchase = purchases.find(p => p.id === id);
+                const existingPurchase = purchases.find(p => p.meal === title);
                 if (existingPurchase) {
-                    Swal.fire('Esta receta ya esta en tu carrito');
+                    Swal.fire(
+                        'Esta receta ya esta en tu carrito!',
+                        'Podras sumar porciones o cancelar al finalizar tu pedido',
+                        'error'
+                      );
                 } else {
                     purchases.push(purchase);
                     localStorage.setItem('purchases', JSON.stringify(purchases));
-                    Swal.fire('Esta receta se agrego a tu carrito');
+                    Swal.fire(
+                        'La receta se agrego a tu carrito!',
+                        'Podras sumar porciones o cancelar al finalizar tu pedido',
+                        'success'
+                      )
                 }
             }
         })

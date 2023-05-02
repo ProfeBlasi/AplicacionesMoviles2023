@@ -1,6 +1,7 @@
 import { selectFilter } from "./pages/receta.js"
 import { initMap, validarFormulario } from "./pages/contacto.js"
 import { compra } from "./pages/degustacion.js"
+import { carrousel } from "./pages/home.js";
 
 const $main = $('#main-cointaner');
 const opciones = {
@@ -15,6 +16,7 @@ function cargarVista(vistaUrl) {
   $main.load(opciones[vista], function () {
     switch (vista) {
       case "Home":
+        carrousel();
         break;
       case "RecetaDe":
         selectFilter();
