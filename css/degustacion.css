@@ -11,6 +11,7 @@
   text-align: left;
   vertical-align: top;
   border: 1px solid chocolate;
+  vertical-align: middle;
 }
 
 .table th {
@@ -69,109 +70,107 @@
   }
 }
 
-.section-container-degustacion {
+.purchase-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.purchase-buttons button {
+  font-size: 1.2rem;
+  padding: 10px;
+  background-color: rgb(101,92,201);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 25%;
+  margin: 0 10px;
+}
+
+@media (max-width: 600px) {
+  .purchase-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .purchase-buttons button {
+    width: 50%;
+    margin: 10px 0;
+  }
+}
+
+
+@media screen and (max-width: 767px) {
+  /* Selecciona la segunda columna (índice 1) y la oculta */
+  table tbody td:nth-child(2),
+  table thead th:nth-child(2) {
+    display: none;
+  }
+}
+
+td img {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-compra {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
-.section-container-degustacion .card-containerOpciones .card-container{
-  margin: 15px;
-}
-
-.section-container-degustacion .card-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.section-container-degustacion .card {
-  width: 280px;
-  height: 380px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.section-container-degustacion .card-image {
-  height: 200px;
-  object-fit: cover;
-}
-
-.section-container-degustacion .card img {
-  display: block;
+.container-compra img {
+  width: 32.4%;
+  height: auto;
   margin: auto;
-  width: 100%;
+  margin-bottom: 10px;
 }
 
-.section-container-degustacion .card-title {
+.container-precio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+}
+
+.resumen-total-precio {
+  flex: 1;
+  text-align: center;
   font-size: 1.2rem;
   font-weight: bold;
-  margin: 1rem;
 }
 
-.section-container-degustacion .card-price {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.section-container-degustacion .card-buy {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem;
-  cursor: pointer;
-  align-self: center;
-  margin-bottom: 1rem;
-}
-
-#pedido, .btnSeguirComprando, .btnCompra{
-  font-size: 1.2rem;
-  padding: 0.5rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  align-self: center;
-  cursor: pointer;
-  /* Centrar horizontalmente */
-  display: block;
-  margin: 10px auto;
-}
-
-.section-container-degustacion .card-buy:hover {
-  background-color: #0069d9;
-}
-
-.section-container-degustacion span{
-  background-color: red;
-  color: #fff;
+button.comprar {
   font-size: 1.2rem;
   padding: 10px;
-  margin: 5px;
-  text-align: right;
-  border: 1px  #0069d9;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 25%;
+  margin: 0 10px;
+  background-color: rgb(48,133,214);
+  color: white;
 }
 
-
-
-@media screen and (min-width: 768px) {
-  .section-container-degustacion .card-container {
-    flex-wrap: nowrap;
-  }
-
-  .section-container-degustacion .card {
-    margin-right: 20px;
-  }
-
-  #pedido {
-    margin-top: 2rem;
-  }
+button.cancelar {
+  font-size: 1.2rem;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  align-self: center;
+  cursor: pointer;
+  width: 25%;
+  margin: 0 10px;
+  background-color: red;
+  color: white;
 }
-
-
 

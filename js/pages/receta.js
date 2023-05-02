@@ -1,70 +1,58 @@
-import { getCategories, getByOption } from "../service/dataApi.js";
-import { traducir } from "../service/dataApi.js";
+import { getCategories, getByOption, traducir, translate } from "../service/dataApi.js";
 import { listCardContainer } from "../utils/card.js"
 
-export const maquetarReceta = () => {
-    options('c', 'opcionCategorias');
-    options('i', 'opcionIngrediente');
-    options('a', 'opcionArea');
-}
-
-const options = (caracter, idClassOption) => {
-    return getCategories(caracter).then(data => {
-        const select = document.getElementById(idClassOption);
-        listCardContainer(1, getByOption('c', data.meals[0].strCategory));
-        data.meals.forEach(async category => {
-            const option = document.createElement('option');
-            switch (caracter) {
-                case "c":
-                    option.value = category.strCategory;
-                    option.text = await traducir(category.strCategory);
-                    break;
-                case "i":
-                    option.value = category.strIngredient;
-                    option.text = await traducir(category.strIngredient);
-                    break;
-                case "a":
-                    option.value = category.strArea;
-                    option.text = await traducir(category.strArea);
-                    break;
+export const selectFilter = () => {
+    var categoria;
+    $(document).ready(function () {
+        $('#categoria').on('change', async function () {
+            categoria = $(this).val();
+            var opciones = [];
+            if (categoria === 'categoria') {
+                opciones = await loadList(opciones, 'c');
+            } else if (categoria === 'ingrediente') {
+                opciones = await loadList(opciones, 'i');
+            } else if (categoria === 'region') {
+                opciones = await loadList(opciones, 'a');
             }
-            select.appendChild(option);
-        });
-
-        select.addEventListener('change', () => {
-            const selectedCategory = select.value;
-            listCardContainer(1, getByOption('c', selectedCategory));
+            var opcionSelect = $('#opcion');
+            opcionSelect.empty();
+            for (var i = 0; i < opciones.length; i++) {
+                opcionSelect.append($('<option></option>').val(opciones[i]).html(opciones[i]));
+            }
         });
     });
-};
-
-
-
-
-/*
-
-const options = (caracter, idClassOption) =>{
-    return getCategories(caracter).then(data => {
-        const select = document.getElementById(idClassOption);
-        listCardContainer(1,getByOption('c', data.meals[0].strCategory));
-        data.meals.forEach(async category => {
-            const option = document.createElement('option');
-            switch (caracter) {
-                case "c":
-                    option.value = category.strCategory;
-                    option.text = await traducir(category.strCategory);
-                  break;
-                /*case "i":
-                    option.value = category.strIngredient;
-                    option.text = await traducir(category.strIngredient);
-                  break;
-                case "a":
-                    option.value = category.strArea;
-                    option.text = await traducir(category.strArea);
-                  break;*/
-/*      }
-    select.appendChild(option);
-});
-});
+    $(document).ready(function () {
+        $('#opcion').on('change', async function () {
+            var opcion = $(this).val();
+            opcion = await traducir(opcion);
+            switch (categoria) {
+                case 'categoria':
+                    listCardContainer(getByOption('c', opcion));
+                case 'ingrediente':
+                    listCardContainer(getByOption('i', opcion));
+                case 'region':
+                    listCardContainer(getByOption('a', opcion));
+            }
+        });
+    });
 }
-*/
+
+
+const loadList = async (opciones, filter) => {
+    const data = await getCategories(filter);
+    const promises = data.meals.map(async (category) => {
+        switch (filter) {
+            case 'c':
+                const categoryName = await translate(category.strCategory);
+                return categoryName;
+            case 'i':
+                const ingredientName = await translate(category.strIngredient);
+                return ingredientName;
+            case 'a':
+                const areaName = await translate(category.strArea);
+                return areaName;
+        }
+    });
+    opciones = await Promise.all(promises);
+    return opciones;
+};

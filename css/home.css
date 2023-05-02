@@ -1,62 +1,150 @@
-.card-container h2{
-    text-align: center;
+.carousel {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  position: relative;
 }
 
-.card-container .card{
+.slide {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel .prev,
+.carousel .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  width: 40px;
+  height: 40px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.carousel .prev:hover,
+.carousel .next:hover {
+  background-color: #333;
+  opacity: 1;
+}
+
+.carousel .prev {
+  left: 20px;
+}
+
+.carousel .next {
+  right: 20px;
+}
+
+.carousel .slide {
+  display: none;
+}
+
+.carousel .slide.active {
+  display: block;
+}
+
+.carousel .prev::before,
+.carousel .next::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 15px;
+  border-color: transparent transparent transparent #fff;
+  transform: rotate(180deg);
+}
+
+.carousel .prev {
+  margin-right: 10px;
+}
+
+.carousel .next::before {
+  transform: rotate(0deg);
+  margin-left: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .carousel {
+    height: 300px;
+  }
+  .slide {
+    height: 300px;
+  }
+}
+
+.container-recetas {
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  ), url("/Imagenes/home_recetas.jpg");
+  height: auto;
+  color: white;
+  text-align: justify;
+  margin: 50px 0;
+}
+
+.container-recetas p {
+  margin: 20px;
+  display: block;
+  font-size: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .container-recetas {
+    display: flex;
     flex-direction: row;
-    text-align: center;
-    max-width:100%;
-    display:flex;
-}
-
-.card-container .card img{
-    width: 30%;
-    max-height: 400px;
-    margin: 2%;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    height: auto;
+  }
+
+  .container-recetas p {
+    margin: 20px;
+    width: 50%;
+  }
+
+  .container-recetas img {
+    width: 45%;
+    height: auto;
+    margin: 20px;
+  }
 }
 
-.card-container .card-info{
-    margin: 2%;
-    width: 100%;
-
+.container_delivery, .container-carrousel {
+  position: relative;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 800px;
 }
 
-.card-container .card-info h2{
-    font-size: 200%;
-    font-family: "Poppins", sans-serif;
+.container_delivery h2, .container-carrousel h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-.card-container .card-info button{
-    display: none;
+.container_delivery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-.card-container .card-info p{
-    display: block;
-    
-}
-
-.titulo-home{
-    font-size: 240%;
-    font-family: "Poppins", sans-serif;
-    text-align: center;
-    margin:3% 0%;
-}
-
-/*850px*/
-@media (max-width: 850px){
-    
-    .card-container .card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-         
-    }
-
-    .card-container .card img{
-        width: 60%;
-        margin-top: 5%;
-        
-    }
-}

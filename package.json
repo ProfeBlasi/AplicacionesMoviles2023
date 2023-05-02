@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "browser-polyfill": "^3.20.2"
+  }
+}

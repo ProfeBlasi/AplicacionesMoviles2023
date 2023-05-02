@@ -1,5 +1,20 @@
-<section id="seccion_1">
-    <h2 class="titulo-seccion-1">Seleccione una categoria</h2>
-    <select id="opcionCategorias">Categoria</select>
+<section id="seccion-receta">
+    <h2>Busca tu receta</h2>
+    <div class="selects-wrapper">
+      <div class="select-container">
+        <label for="categoria">Lista:</label>
+        <select id="categoria" name="categoria">
+          <option disabled selected>Seleccione una opcion</option>
+          <option value="categoria">Categoria</option>
+          <option value="ingrediente">Ingrediente</option>
+          <option value="region">Region</option>
+        </select>
+      </div>
+      <div class="select-container">
+        <label for="opcion">Opción:</label>
+        <select id="opcion" name="opcion"></select>
+      </div>
+    </div>
     <div class="card-containerOpciones"></div>
-</section>
+  </section>
+  
