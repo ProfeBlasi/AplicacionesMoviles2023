@@ -3,5 +3,5 @@ body {
 }
 
 main {
-  min-height: calc(84vh - 140px); /* ajustar 140px al tamaño del footer */
+  min-height: calc(84vh - 140px);
 }
