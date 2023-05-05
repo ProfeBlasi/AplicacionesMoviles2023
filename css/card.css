@@ -26,7 +26,6 @@
     display: none;
   }
   
-  
   .secion-de-cards {
     display: flex;
     justify-content: center;
@@ -38,7 +37,7 @@
     font-family: "Poppins", sans-serif;
   }
   
-  .card-containerOpciones {
+  .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -64,7 +63,6 @@
     box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
     border:  solid blue;
   }
-  
   
   .card img {
     width: 75%;
@@ -113,7 +111,7 @@
   }
   
   @media (max-width: 800px) {
-    .card-containerOpciones {
+    .card-container {
       display: block;
     }
   
@@ -135,4 +133,3 @@
       max-width: 45%;
     }
   }
-  

@@ -1,16 +1,16 @@
 export const initMap = () => {
     var mapOptions = {
-        zoom: 14,
+        zoom: 15,
         center: {
-            lat: -34.775154,
-            lng: -58.267896
+            lat: -34.77476,
+            lng: -58.26758
         }
     };
     var map = new google.maps.Map(document.getElementById('mapa'), mapOptions);
     new google.maps.Marker({
         position: {
-            lat: -34.9224506,
-            lng: -58.267896
+            lat: -34.77476,
+            lng: -58.26758
         },
         map: map,
     });
