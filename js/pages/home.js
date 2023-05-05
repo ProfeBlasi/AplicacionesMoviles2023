@@ -1,26 +1,19 @@
+import { card } from "../utils/card.js"
+
 export const carrousel = () => {
-    // Seleccionamos los elementos HTML del carrusel
     const carousel = document.querySelector('.carousel');
     const slides = carousel.querySelectorAll('.slide');
     const prevButton = carousel.querySelector('.prev');
     const nextButton = carousel.querySelector('.next');
-
-    // Configuramos los parámetros del carrusel
-    const interval = 5000; // Duración de cada slide en milisegundos
-    let slideIndex = 0; // Índice del slide actual
-    let timer = null; // Identificador del temporizador
-
-    // Función para mostrar el slide correspondiente
+    const interval = 5000;
+    let slideIndex = 0;
+    let timer = null;
     function showSlide() {
-        // Ocultamos todos los slides
         for (let i = 0; i < slides.length; i++) {
             slides[i].classList.remove('active');
         }
-        // Mostramos el slide actual
         slides[slideIndex].classList.add('active');
     }
-
-    // Función para avanzar al siguiente slide
     function nextSlide() {
         slideIndex++;
         if (slideIndex >= slides.length) {
@@ -28,8 +21,6 @@ export const carrousel = () => {
         }
         showSlide();
     }
-
-    // Función para retroceder al slide anterior
     function prevSlide() {
         slideIndex--;
         if (slideIndex < 0) {
@@ -37,12 +28,26 @@ export const carrousel = () => {
         }
         showSlide();
     }
-
-    // Configuramos los botones para avanzar o retroceder
     prevButton.addEventListener('click', prevSlide);
     nextButton.addEventListener('click', nextSlide);
-
-    // Mostramos el primer slide y empezamos el temporizador
     showSlide();
     timer = setInterval(nextSlide, interval);
+}
+
+export const viewFavorites = () => {
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    favorites.sort((a, b) => b.cantidad - a.cantidad);
+    const cardContainer = $('.card-container');
+    console.log(favorites);
+    console.log(cardContainer);
+    if (favorites.length === 0) {
+        const h2 = $('<h2>').text('Todavia no probaste nuestras recetas???');
+        const img = $('<img>').attr('src', '../Imagenes/boySorprendido.jpg');
+        cardContainer.append(h2, img);
+    } else {
+        favorites.slice(0, 3).forEach(favorite => {
+            var cardHome = card(favorite.image, "alt" + favorite.id, favorite.meal, "instru", favorite.id);
+            cardContainer.append(cardHome);
+        });
+    }
 }

@@ -1,5 +1,5 @@
 import { translate, getElementById } from "../service/dataApi.js";
-const card = (image, imageAlt, title, instructions, id) => {
+export const card = (image, imageAlt, title, instructions, id) => {
     const card = $('<article>').addClass('card');
     const imageDiv = $('<img>').addClass('card-image').attr('src', image).attr('alt', imageAlt);
     card.append(imageDiv);
@@ -17,7 +17,7 @@ const card = (image, imageAlt, title, instructions, id) => {
         });
     });
     const buyButton = $('<button>').addClass('card-buy').text('Agregar al carrito').on('click', function () {
-        const purchase = { image: image, meal: title, precio: precio, cantidad: 1 };
+        const purchase = { id:id, image: image, meal: title, precio: precio, cantidad: 1 };
         Swal.fire({
             title: title + '!!',
             text: 'Precio: $' + precio + ' por unidad',
@@ -30,8 +30,7 @@ const card = (image, imageAlt, title, instructions, id) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 const purchases = JSON.parse(localStorage.getItem('purchases')) || [];
-                // Busca una compra con el mismo id y actualiza la cantidad
-                const existingPurchase = purchases.find(p => p.meal === title);
+                const existingPurchase = purchases.find(p => p.id === id);
                 if (existingPurchase) {
                     Swal.fire(
                         'Esta receta ya esta en tu carrito!',
@@ -57,7 +56,7 @@ const card = (image, imageAlt, title, instructions, id) => {
 
 export const listCardContainer = (data) => {
     data.then(data => {
-        const cardContainer = $('.card-containerOpciones');
+        const cardContainer = $('.card-container');
         cardContainer.empty();
         data.meals.forEach(async element => {
             const receta = await getElementById(element.idMeal);

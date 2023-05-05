@@ -37,7 +37,6 @@ export const selectFilter = () => {
     });
 }
 
-
 const loadList = async (opciones, filter) => {
     const data = await getCategories(filter);
     const promises = data.meals.map(async (category) => {

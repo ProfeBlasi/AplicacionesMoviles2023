@@ -1,4 +1,3 @@
-//Corregir coordenadas
 export const initMap = () => {
     var mapOptions = {
         zoom: 15,
