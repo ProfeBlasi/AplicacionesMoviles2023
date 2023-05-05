@@ -1,6 +1,7 @@
 import { translate, getElementById } from "../service/dataApi.js";
 
 const card = (image, imageAlt, title, instructions, id) => {
+    const cardLink  = $('<a>').addClass('cardLink').attr('href', "#");
     const card = $('<div>').addClass('card');
     const imageDiv = $('<img>').addClass('card-image').attr('src', image).attr('alt', imageAlt);
     card.append(imageDiv);
@@ -53,8 +54,38 @@ const card = (image, imageAlt, title, instructions, id) => {
     });
     info.append(titleDiv).append(showInstructionsButton).append(instructionsText).append(buyButton);
     card.append(info);
-    return card;
+    cardLink.prepend(card);
+    
+    cardLink.on('click', function() {
+        //borrar dom mian
+        //
+        // Aquí puedes agregar la lógica que deseas ejecutar cuando se hace clic en la card
+        console.log('Se hizo clic en la card');
+    });
+    return cardLink;
+    
 };
+
+
+
+//lista de los ingredientes de la receta
+/*const ingredients = [];
+for (const key in datos) {
+    if (key.includes("strIngredient") || key.includes("strMeasure")) {
+        ingredients.push(datos[key]);
+    }
+}
+
+const contenedorUl = document.querySelector('.list-ingredientes');
+
+for (let index = 0; index < 20; index++) {
+    const elementoLi = document.createElement('li');
+    elementoLi.textContent = ingredients[20 + index] + ' ' + ' ' + ingredients[index];
+    contenedorUl.appendChild(elementoLi);
+
+}*/
+
+
 
 export const listCardContainer = (data) => {
     data.then(data => {
@@ -65,6 +96,7 @@ export const listCardContainer = (data) => {
             const meal = receta.meals[0];
             const titulo = await translate(meal.strMeal);
             const instrucciones = await translate(meal.strInstructions);
+            //var datosRectas = 
             var cardHome = card(meal.strMealThumb, meal.strMeal, titulo, instrucciones, meal.idMeal);
             cardContainer.append(cardHome);
         });
