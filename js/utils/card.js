@@ -53,24 +53,19 @@ export const card = (image, imageAlt, title, instructions, id,ingredientes) => {
     info.append(titleDiv).append(showInstructionsButton).append(instructionsText).append(buyButton);
     card.append(info);
     cardLink.prepend(card);
-
     cardLink.on('click', function (e) {
         e.preventDefault();
         //borrar dom mian
         const mainContainer = $('#seccion-receta');
-        console.log(mainContainer);
         mainContainer.empty();
         //poner html de recetas
         mainContainer.append(card2(title ,image ,instructions,ingredientes));
         const contenedorUl = document.querySelector('.list-ingredientes');
-        console.log(ingredientes);
 		for (let index = 0; index < 20; index++) {
 			const elementoLi = document.createElement('li');
 			elementoLi.textContent = ingredientes[20 + index] + ' ' + ' ' + ingredientes[index];
 			contenedorUl.appendChild(elementoLi);
 		}
-        // Aquí puedes agregar la lógica que deseas ejecutar cuando se hace clic en la card
-        console.log('Se hizo clic en la card');
     });
     return cardLink;
 
@@ -94,9 +89,9 @@ const card2 = (titulo, image, instructions,ingredientes) => {
         </section>
         <section id="seccion-3">
             <h2>Preparacion</h2>
-            <img src="" alt="POLLO A LA NARANJA" class="img-receta">
+            <img src=${image} alt="Imagen de"+${image}" class="img-receta">
             <h3>Como hacer ${titulo}</h3>
-            <p class="preparacion-receta">${instructions}</p>
+            <p>${instructions}</p>
         </section>
     </section>
     ` 
@@ -110,14 +105,12 @@ export const listCardContainer = (data) => {
         data.meals.forEach(async element => {
             const receta = await getElementById(element.idMeal);
             const meal = receta.meals[0];
-            //const ingredientes = await translate(meal.strMeal);
             const titulo = await translate(meal.strMeal);
             const instrucciones = await translate(meal.strInstructions);
-            /* a k*/
             const ingredients = [];
-            for (const key in element) {
+            for (const key in meal) {
                 if (key.includes("strIngredient") || key.includes("strMeasure")) {
-                    ingredients.push(element[key]);
+                    ingredients.push(meal[key]);
                 }
             }
             var cardHome = card(meal.strMealThumb, meal.strMeal, titulo, instrucciones, meal.idMeal,ingredients);
