@@ -1,5 +1,6 @@
 import { translate, getElementById } from "../service/dataApi.js";
-export const card = (image, imageAlt, title, instructions, id) => {
+export const card = (image, imageAlt, title, instructions, id,ingredientes) => {
+    const cardLink = $('<a>').addClass('cardLink').attr('href', "");
     const card = $('<article>').addClass('card');
     const imageDiv = $('<img>').addClass('card-image').attr('src', image).attr('alt', imageAlt);
     card.append(imageDiv);
@@ -17,7 +18,7 @@ export const card = (image, imageAlt, title, instructions, id) => {
         });
     });
     const buyButton = $('<button>').addClass('card-buy').text('Agregar al carrito').on('click', function () {
-        const purchase = { id:id, image: image, meal: title, precio: precio, cantidad: 1 };
+        const purchase = { id: id, image: image, meal: title, precio: precio, cantidad: 1 };
         Swal.fire({
             title: title + '!!',
             text: 'Precio: $' + precio + ' por unidad',
@@ -36,7 +37,7 @@ export const card = (image, imageAlt, title, instructions, id) => {
                         'Esta receta ya esta en tu carrito!',
                         'Podras sumar porciones o cancelar al finalizar tu pedido',
                         'error'
-                      );
+                    );
                 } else {
                     purchases.push(purchase);
                     localStorage.setItem('purchases', JSON.stringify(purchases));
@@ -44,7 +45,7 @@ export const card = (image, imageAlt, title, instructions, id) => {
                         'La receta se agrego a tu carrito!',
                         'Podras sumar porciones o cancelar al finalizar tu pedido',
                         'success'
-                      )
+                    )
                 }
             }
         })
@@ -52,36 +53,54 @@ export const card = (image, imageAlt, title, instructions, id) => {
     info.append(titleDiv).append(showInstructionsButton).append(instructionsText).append(buyButton);
     card.append(info);
     cardLink.prepend(card);
-    
-    cardLink.on('click', function() {
+
+    cardLink.on('click', function (e) {
+        e.preventDefault();
         //borrar dom mian
-        //
+        const mainContainer = $('#seccion-receta');
+        console.log(mainContainer);
+        mainContainer.empty();
+        //poner html de recetas
+        mainContainer.append(card2(title ,image ,instructions,ingredientes));
+        const contenedorUl = document.querySelector('.list-ingredientes');
+        console.log(ingredientes);
+		for (let index = 0; index < 20; index++) {
+			const elementoLi = document.createElement('li');
+			elementoLi.textContent = ingredientes[20 + index] + ' ' + ' ' + ingredientes[index];
+			contenedorUl.appendChild(elementoLi);
+		}
         // Aquí puedes agregar la lógica que deseas ejecutar cuando se hace clic en la card
         console.log('Se hizo clic en la card');
     });
     return cardLink;
-    
+
 };
 
-
-
-//lista de los ingredientes de la receta
-/*const ingredients = [];
-for (const key in datos) {
-    if (key.includes("strIngredient") || key.includes("strMeasure")) {
-        ingredients.push(datos[key]);
-    }
+const card2 = (titulo, image, instructions,ingredientes) => {
+    return`
+    <section class="container-data-receta">
+        <h2 class="nombre-receta">${titulo} </h2>
+        <section id="seccion-1">
+            <h2>Reseta de ${titulo}</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quam ipsa a fugiat sit est tempore iste
+                reiciendis perferendis praesentium illo repudiandae in, nam modi corrupti obcaecati, officia sequi
+                ipsam.</p>
+            <img src=${image} alt="Imagen de"+${image} class="img-receta">
+        </section>
+        <section id="seccion-2">
+            <h3>Ingredientes: </h3>
+            <ul class="list-ingredientes">
+            </ul>
+        </section>
+        <section id="seccion-3">
+            <h2>Preparacion</h2>
+            <img src="" alt="POLLO A LA NARANJA" class="img-receta">
+            <h3>Como hacer ${titulo}</h3>
+            <p class="preparacion-receta">${instructions}</p>
+        </section>
+    </section>
+    ` 
 }
-
-const contenedorUl = document.querySelector('.list-ingredientes');
-
-for (let index = 0; index < 20; index++) {
-    const elementoLi = document.createElement('li');
-    elementoLi.textContent = ingredients[20 + index] + ' ' + ' ' + ingredients[index];
-    contenedorUl.appendChild(elementoLi);
-
-}*/
-
 
 
 export const listCardContainer = (data) => {
@@ -91,10 +110,17 @@ export const listCardContainer = (data) => {
         data.meals.forEach(async element => {
             const receta = await getElementById(element.idMeal);
             const meal = receta.meals[0];
+            //const ingredientes = await translate(meal.strMeal);
             const titulo = await translate(meal.strMeal);
             const instrucciones = await translate(meal.strInstructions);
-            //var datosRectas = 
-            var cardHome = card(meal.strMealThumb, meal.strMeal, titulo, instrucciones, meal.idMeal);
+            /* a k*/
+            const ingredients = [];
+            for (const key in element) {
+                if (key.includes("strIngredient") || key.includes("strMeasure")) {
+                    ingredients.push(element[key]);
+                }
+            }
+            var cardHome = card(meal.strMealThumb, meal.strMeal, titulo, instrucciones, meal.idMeal,ingredients);
             cardContainer.append(cardHome);
         });
     });
