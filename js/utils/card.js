@@ -79,6 +79,8 @@ const card2 = (titulo, image, instructions,ingredientes) => {
             <h2>Reseta de ${titulo}</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quam ipsa a fugiat sit est tempore iste
                 reiciendis perferendis praesentium illo repudiandae in, nam modi corrupti obcaecati, officia sequi
+                ipsam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quam ipsa a fugiat sit est tempore iste
+                reiciendis perferendis praesentium illo repudiandae in, nam modi corrupti obcaecati, officia sequi
                 ipsam.</p>
             <img src=${image} alt="Imagen de"+${image} class="img-receta">
         </section>
@@ -107,6 +109,8 @@ export const listCardContainer = (data) => {
             const meal = receta.meals[0];
             const titulo = await translate(meal.strMeal);
             const instrucciones = await translate(meal.strInstructions);
+            console.log(instrucciones);
+            console.log(meal.strInstructions);
             const ingredients = [];
             for (const key in meal) {
                 if (key.includes("strIngredient") || key.includes("strMeasure")) {

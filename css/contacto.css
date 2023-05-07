@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap');
+
 .error {
   color: red;
 }
@@ -8,6 +12,13 @@ max-width: 800px;
 margin: 0 auto;
 padding: 20px;
 box-sizing: border-box;
+}
+
+.section-container h2{
+  text-align: center;
+  margin: 2% 0% 5% 0%;
+  font-size: 230%;
+  font-family: 'Poppins', sans-serif;
 }
 
 .form {
@@ -41,6 +52,7 @@ box-sizing: border-box;
 display: block;
 margin-bottom: 5px;
 font-size: 16px;
+font-family: 'Poppins', sans-serif;
 font-weight: bold;
 }
 
@@ -56,6 +68,7 @@ max-width: 200px;
 margin-top: 20px;
 padding: 10px;
 font-size: 16px;
+font-family: 'DynaPuff', cursive;
 font-weight: bold;
 color: #fff;
 background-color:rgb(101,92,201);

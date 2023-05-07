@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap');
+
+
 .card-show-instructions, .card-buy {
     display: block;
     margin-top: 1rem;
@@ -43,6 +48,18 @@
     justify-content: center;
   }
 
+  .card-container h2{
+    text-align: center;
+    font-size: 250%;
+    margin: 1%;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .card-container img{
+    width: 45%;
+    margin: 1% 20% 3% 20%;
+  }
+
   .cardLink{
     margin: 1%;
     padding: 0%;
@@ -78,6 +95,9 @@
   
   .card-info button {
     font-size: 1.2rem;
+    
+    font-family: 'DynaPuff', cursive;
+
     padding: 0.5rem;
     background-color: rgb(101,92,201);
     color: white;
@@ -90,13 +110,14 @@
   }
   
   .card-info h2 {
-    font-size: 140%;
+    font-size: 200%;
+    margin-top: 5%;
     font-family: "Poppins", sans-serif;
   }
   
   .card-info p {
     font-size: 130%;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Roboto Serif', serif;
     margin: 2%;
   }
   
@@ -111,9 +132,9 @@
   }
   
   @media (max-width: 800px) {
-    .card-container {
+    /*.card-container {
       display: block;
-    }
+    }*/
   
     .card {
       max-width: 100%;
@@ -130,6 +151,6 @@
   
   @media (max-width: 1437px) and (min-width: 801px) {
     .card {
-      max-width: 45%;
+      max-width: 100%;
     }
   }
