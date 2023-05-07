@@ -38,8 +38,6 @@ export const viewFavorites = () => {
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     favorites.sort((a, b) => b.cantidad - a.cantidad);
     const cardContainer = $('.card-container');
-    console.log(favorites);
-    console.log(cardContainer);
     if (favorites.length === 0) {
         const h2 = $('<h2>').text('Todavia no probaste nuestras recetas???');
         const img = $('<img>').attr('src', '../Imagenes/boySorprendido.jpg');
@@ -47,7 +45,10 @@ export const viewFavorites = () => {
     } else {
         favorites.slice(0, 3).forEach(favorite => {
             var cardHome = card(favorite.image, "alt" + favorite.id, favorite.meal, "instru", favorite.id);
-            cardContainer.append(cardHome);
+            var divH2 = $('<div>').addClass('container-favoritos');
+            var h2 = $('<h2>').text('Tus favoritos');
+            divH2.append(h2);
+            cardContainer.append(divH2, cardHome);
         });
     }
 }

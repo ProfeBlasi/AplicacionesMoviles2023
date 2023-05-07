@@ -18,15 +18,10 @@ export const getRandom = () => {
 }
 
 export const translate = async (texto) => {
-  const oraciones = texto.split('. ');
-  const traducciones = [];
-
-  for (const oracion of oraciones) {
-    const respuesta = await fetch(TRANSLATE_GOOGLE + encodeURIComponent(oracion));
-    const json = await respuesta.json();
-    traducciones.push(json[0][0][0]);
-  }
-  return traducciones.join('. ');
+  const respuesta = await fetch(TRANSLATE_GOOGLE + encodeURIComponent(texto));
+  const json = await respuesta.json();
+  const traducciones = json[0];
+  return traducciones.map(traduccion => traduccion[0]).join(' ');
 };
 
 export const traducir = async (texto) => {

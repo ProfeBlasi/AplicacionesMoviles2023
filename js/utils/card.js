@@ -1,21 +1,17 @@
 import { translate, getElementById } from "../service/dataApi.js";
-export const card = (image, imageAlt, title, instructions, id,ingredientes) => {
+export const card = (image, imageAlt, title, instructions, id, ingredientes, xd) => {
     const cardLink = $('<a>').addClass('cardLink').attr('href', "");
     const card = $('<article>').addClass('card');
     const imageDiv = $('<img>').addClass('card-image').attr('src', image).attr('alt', imageAlt);
     card.append(imageDiv);
     const info = $('<div>').addClass('card-info');
     const titleDiv = $('<h2>').addClass('card-title').text(title);
-    const instructionsText = $('<p>').addClass('card-instructions hidden').text(instructions);
-    const showInstructionsButton = $('<button>').addClass('card-show-instructions').text('Mostrar instrucciones');
+    const shareButton = $('<button>').addClass('card-show-instructions').text('Compartir Wap');
     const precio = id - 52000;
-    showInstructionsButton.on('click', function () {
-        Swal.fire({
-            title: title,
-            html: instructions,
-            icon: 'info',
-            confirmButtonText: 'OK',
-        });
+    shareButton.on('click', function () {
+        const mensaje = `¡Hola! Te comparto una receta: ${title} podes seguir las siguientes instrucciones ${instructions} ${image}`;
+        const urlCompartir = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+        window.open(urlCompartir);
     });
     const buyButton = $('<button>').addClass('card-buy').text('Agregar al carrito').on('click', function () {
         const purchase = { id: id, image: image, meal: title, precio: precio, cantidad: 1 };
@@ -50,53 +46,43 @@ export const card = (image, imageAlt, title, instructions, id,ingredientes) => {
             }
         })
     });
-    info.append(titleDiv).append(showInstructionsButton).append(instructionsText).append(buyButton);
+    info.append(titleDiv).append(shareButton).append(buyButton);
     card.append(info);
     cardLink.prepend(card);
-    cardLink.on('click', function (e) {
+    cardLink.on('click', async function (e) {
         e.preventDefault();
-        //borrar dom mian
         const mainContainer = $('#seccion-receta');
         mainContainer.empty();
-        //poner html de recetas
-        mainContainer.append(card2(title ,image ,instructions,ingredientes));
+        mainContainer.append(card2(title, image, instructions));
+        console.log(xd);
+        console.log(instructions);
         const contenedorUl = document.querySelector('.list-ingredientes');
-		for (let index = 0; index < 20; index++) {
-			const elementoLi = document.createElement('li');
-			elementoLi.textContent = ingredientes[20 + index] + ' ' + ' ' + ingredientes[index];
-			contenedorUl.appendChild(elementoLi);
-		}
+        for (let index = 0; index < 20; index++) {
+            const elementoLi = document.createElement('li');
+            elementoLi.textContent = ingredientes[20 + index] + ' ' + ' ' + await translate(ingredientes[index]);
+            contenedorUl.appendChild(elementoLi);
+        }
     });
     return cardLink;
 
 };
 
-const card2 = (titulo, image, instructions,ingredientes) => {
-    return`
+const card2 = (titulo, image, instructions) => {
+    return `
     <section class="container-data-receta">
-        <h2 class="nombre-receta">${titulo} </h2>
+        <h2 class="nombre-receta">Reseta de ${titulo} </h2>
         <section id="seccion-1">
-            <h2>Reseta de ${titulo}</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quam ipsa a fugiat sit est tempore iste
-                reiciendis perferendis praesentium illo repudiandae in, nam modi corrupti obcaecati, officia sequi
-                ipsam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quam ipsa a fugiat sit est tempore iste
-                reiciendis perferendis praesentium illo repudiandae in, nam modi corrupti obcaecati, officia sequi
-                ipsam.</p>
             <img src=${image} alt="Imagen de"+${image} class="img-receta">
         </section>
         <section id="seccion-2">
             <h3>Ingredientes: </h3>
             <ul class="list-ingredientes">
             </ul>
-        </section>
-        <section id="seccion-3">
-            <h2>Preparacion</h2>
-            <img src=${image} alt="Imagen de"+${image}" class="img-receta">
-            <h3>Como hacer ${titulo}</h3>
+            <h3>Instrucciones</h3>
             <p>${instructions}</p>
         </section>
     </section>
-    ` 
+    `
 }
 
 
@@ -109,15 +95,13 @@ export const listCardContainer = (data) => {
             const meal = receta.meals[0];
             const titulo = await translate(meal.strMeal);
             const instrucciones = await translate(meal.strInstructions);
-            console.log(instrucciones);
-            console.log(meal.strInstructions);
             const ingredients = [];
             for (const key in meal) {
                 if (key.includes("strIngredient") || key.includes("strMeasure")) {
                     ingredients.push(meal[key]);
                 }
             }
-            var cardHome = card(meal.strMealThumb, meal.strMeal, titulo, instrucciones, meal.idMeal,ingredients);
+            var cardHome = card(meal.strMealThumb, meal.strMeal, titulo, instrucciones, meal.idMeal, ingredients, meal.strInstructions);
             cardContainer.append(cardHome);
         });
     });
