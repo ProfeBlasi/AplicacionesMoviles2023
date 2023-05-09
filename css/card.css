@@ -2,40 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@700&display=swap');
 
-
-.card-show-instructions, .card-buy {
-    display: block;
-    margin-top: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #000;
-    border-radius: 0.25rem;
-    background-color: #fff;
-    cursor: pointer;
-  }
-  
-  .card-show-instructions.active {
-    background-color: #000;
-    color: #fff;
-  }
-  
-  .card-instructions {
-    margin-top: 1rem;
-    padding: 0.5rem;
-    border: 1px solid #000;
-    border-radius: 0.25rem;
-    background-color: #f9f9f9;
-    text-align: justify;
-  }
-  
-  .card-instructions.hidden {
-    display: none;
-  }
-  
-  .secion-de-cards {
-    display: flex;
-    justify-content: center;
-  }
-  
   .titulo-seccion-1 {
     text-align: center;
     font-size: 250%;
@@ -55,8 +21,12 @@
     font-family: "Poppins", sans-serif;
   }
 
-  .card-container img{
-    width: 45%;
+  .card-container article{
+    width: 30%;
+  }
+
+  .card-container a{
+    width: 75%;
     margin: 1% 20% 3% 20%;
   }
 
@@ -64,12 +34,11 @@
     margin: 1%;
     padding: 0%;
     display: inline-block;
-    max-width: 25%;
+    max-width: 75%;
     text-decoration: none;
   }
   
   .card {
-    text-align: center;
     border: solid rgb(101,92,201);
     background-color: burlywood;
     display: flex;
@@ -82,9 +51,10 @@
   }
   
   .card img {
-    width: 75%;
+    width: 85%;
     margin: auto;
     margin-top: 20px;
+    border-radius: 10px;
   }
   
   .card-info {
@@ -136,9 +106,8 @@
       display: block;
     }*/
   
-    .card {
-      max-width: 100%;
-      margin: 2%;
+    .card-container article{
+      width: 90%;
     }
   
     #opcionCategorias {
@@ -149,8 +118,8 @@
     }
   }
   
-  @media (max-width: 1437px) and (min-width: 801px) {
-    .card {
-      max-width: 100%;
+  @media (max-width: 1301px) and (min-width: 801px) {
+    .card-container article{
+      width: 45%;
     }
   }

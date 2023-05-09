@@ -44,7 +44,7 @@ export const viewFavorites = () => {
         cardContainer.append(h2, img);
     } else {
         favorites.slice(0, 3).forEach(favorite => {
-            var cardHome = card(favorite.image, "alt" + favorite.id, favorite.meal, "instru", favorite.id);
+            var cardHome = card(favorite.image, "alt" + favorite.id, favorite.meal, favorite.instrucciones, favorite.id, favorite.ingredientes);
             var divH2 = $('<div>').addClass('container-favoritos');
             var h2 = $('<h2>').text('Tus favoritos');
             divH2.append(h2);

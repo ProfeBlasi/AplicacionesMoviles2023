@@ -4,6 +4,7 @@ export const compra = () => {
         let total = 0;
         const tabla = document.createElement('table');
         tabla.classList.add('table');
+        tabla.id = 'miTabla';
         const cabecera = document.createElement('thead');
         const filaCabecera = document.createElement('tr');
         const encabezados = ['Comida', "Nombre", 'Precio unitario', 'Cantidad', 'Quitar o agregar'];

@@ -466,3 +466,30 @@ footer .website-logo {
     border-bottom: 1px solid #2A2A2A;
   }
 }
+
+.tabla-ingredientes {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tabla-ingredientes td{
+  width: 50%;
+}
+
+
+@media screen and (max-width: 770px) {
+  .tabla-ingredientes {
+    font-size: 0.8em;
+  }
+  
+  .tabla-ingredientes td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+  }
+
+  .tabla-ingredientes td {
+    text-align: left;
+    width: 50%;
+  }
+}
