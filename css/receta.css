@@ -28,7 +28,6 @@
 }
 
 #seccion-2 {
-  display: flex;
   padding: 2%;
   background-color: rgba(222, 184, 135, 0.66);
   border: solid 3px black;
