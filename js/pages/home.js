@@ -43,12 +43,13 @@ export const viewFavorites = () => {
         const img = $('<img>').attr('src', '../Imagenes/boySorprendido.jpg');
         cardContainer.append(h2, img);
     } else {
+        var h2 = $('<h2>').text('Tus favoritos');
+        var divH2 = $('<div>').addClass('container-favoritos');
+        divH2.append(h2);
+        cardContainer.append(divH2);
         favorites.slice(0, 3).forEach(favorite => {
             var cardHome = card(favorite.image, "alt" + favorite.id, favorite.meal, favorite.instrucciones, favorite.id, favorite.ingredientes);
-            var divH2 = $('<div>').addClass('container-favoritos');
-            var h2 = $('<h2>').text('Tus favoritos');
-            divH2.append(h2);
-            cardContainer.append(divH2, cardHome);
+            cardContainer.append(cardHome);
         });
     }
 }
