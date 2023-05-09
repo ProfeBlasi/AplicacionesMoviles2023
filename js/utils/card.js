@@ -90,11 +90,15 @@ const card2 = (titulo, image, instructions) => {
             <img src=${image} alt="Imagen de"+${image} class="img-receta">
         </section>
         <section id="seccion-2">
-            <h3>Ingredientes: </h3>
-            <ul class="list-ingredientes">
-            </ul>
-            <h3>Instrucciones</h3>
-            <p>${instructions}</p>
+            <div>
+                <h3>Ingredientes: </h3>
+                <ul class="list-ingredientes">
+                </ul>
+            </div>
+            <div>
+                <h3>Instrucciones</h3>
+                <p>${instructions}</p>
+            </div>
         </section>
     </section>
     `
