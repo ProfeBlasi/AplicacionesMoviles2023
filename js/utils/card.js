@@ -85,7 +85,7 @@ export const card = (image, imageAlt, title, instructions, id, ingredientes) => 
 const card2 = (titulo, image, instructions) => {
     return `
     <section class="container-data-receta">
-        <h2 class="nombre-receta">Reseta de ${titulo} </h2>
+        <h2 class="nombre-receta">Receta de ${titulo} </h2>
         <section id="seccion-1">
             <img src=${image} alt="Imagen de"+${image} class="img-receta">
         </section>
