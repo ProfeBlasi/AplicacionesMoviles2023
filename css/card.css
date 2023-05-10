@@ -1,7 +1,7 @@
   .titulo-seccion-1 {
     text-align: center;
     font-size: 250%;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Josefin Slab', serif;
   }
   
   .card-container {
@@ -14,7 +14,7 @@
     text-align: center;
     font-size: 250%;
     margin: 1%;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Josefin Slab', serif;
   }
 
   .card-container article{
@@ -61,9 +61,7 @@
   
   .card-info button {
     font-size: 1.2rem;
-    
     font-family: 'DynaPuff', cursive;
-
     padding: 0.5rem;
     background-color: rgb(101,92,201);
     color: white;
@@ -77,13 +75,13 @@
   
   .card-info h2 {
     font-size: 200%;
-    margin-top: 5%;
-    font-family: "Poppins", sans-serif;
+    margin: 5%;
+    font-family: 'Josefin Slab', serif;
   }
   
   .card-info p {
     font-size: 130%;
-    font-family: 'Roboto Serif', serif;
+    font-family: 'Amaranth', sans-serif;
     margin: 2%;
   }
   

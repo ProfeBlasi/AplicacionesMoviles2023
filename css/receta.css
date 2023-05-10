@@ -1,8 +1,8 @@
 .nombre-receta {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Josefin Slab', serif;
   text-align: center;
   font-size: 400%;
-  margin: 1% 0% 0% 0%;
+  margin: 5% 0% 0% 0%;
 }
 
 #seccion-1 {
@@ -20,16 +20,29 @@
 
 #seccion-2 {
   padding: 2%;
+  margin: 0% 2% 4% 2%;
+  display: flex;
+  justify-content: space-between;
   background-color: rgba(222, 184, 135, 0.66);
   border: solid 3px black;
   text-align: center;
 }
 
+
+.seccion2-div-ingredientes{
+  margin-right: 2%;
+  padding: 2%;
+}
+
+.seccion2-div-instrucciones{
+  padding: 2%;
+}
+
+
 #seccion-2 p {
-  margin: 10px 100px;
   text-align: justify;
-  font-size: 1.3rem;
-  font-family: 'Roboto Serif', serif;
+  font-size: 150%;
+  font-family: 'Amaranth', sans-serif;
 }
 
 #seccion-2 h3 {
@@ -40,9 +53,13 @@
 
 #seccion-2 ul {
   font-size: 1.3rem;
-  font-family: 'Roboto Serif', serif;
-  margin: 2%;
-  list-style: none;
+  font-family: 'Amaranth', sans-serif;
+  padding: 2%;
+  
+}
+
+#seccion-2 li {
+  margin:4%;
 }
 
 /*movil responsive*/
@@ -50,7 +67,18 @@
   #seccion-1 img {
     width: 80%;
   }
+
+  #seccion-2 {
+    display: block;
+  }
 }
+
+@media (min-width: 481px) and (max-width: 750px){
+  #seccion-2 {
+    display: block;
+  }
+}
+
 
 /*tablet responsive*/
 @media (min-width: 481px) and (max-width: 1024px){
@@ -59,29 +87,3 @@
   }
 }
 
-.tabla-ingredientes {
-  margin: 0 auto;
-  text-align: center;
-}
-
-.tabla-ingredientes td{
-  width: 50%;
-}
-
-
-@media screen and (max-width: 770px) {
-  .tabla-ingredientes {
-    font-size: 0.8em;
-  }
-  
-  .tabla-ingredientes td:before {
-    content: attr(data-label);
-    float: left;
-    font-weight: bold;
-  }
-
-  .tabla-ingredientes td {
-    text-align: left;
-    width: 50%;
-  }
-}

@@ -1,6 +1,7 @@
 .menu {
     display: block;
     float: right;
+  
   }
   
   .menu li {
@@ -47,6 +48,7 @@ header {
     display: flex;
     margin-left: 40px;
     align-items: center;
+    
   }
   
   .logo img {
@@ -68,9 +70,9 @@ header {
   .menu li a {
     color: #333;
     text-decoration: none;
-    font-size: 120%;
+    font-size: 150%;
     font-weight: 800;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Rubik', sans-serif;
   }
   
   @media (max-width: 768px) {
@@ -155,9 +157,10 @@ header {
   }
 
   #footer h4{
-    font-size: 150%;
+    font-size: 180%;
     font-weight: 800;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Rubik', sans-serif;
+  
   }
   
   .informacion {
@@ -168,8 +171,8 @@ header {
   
   .informacion h4 {
     margin: 10px 20px;
-    
-
+    font-size: 180%;
+    font-family: 'Rubik', sans-serif;
   }
   
   @media (min-width: 768px) {

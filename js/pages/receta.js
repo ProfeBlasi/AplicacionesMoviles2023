@@ -20,6 +20,7 @@ export const selectFilter = () => {
                 opcionSelect.append($('<option></option>').val(opciones[i]).html(opciones[i]));
             }
         });
+        //Getselect()
     });
     $(document).ready(function () {
         $('#opcion').on('change', async function () {
@@ -34,6 +35,7 @@ export const selectFilter = () => {
                     listCardContainer(getByOption('a', opcion));
             }
         });
+        //Getselect()
     });
 }
 
@@ -55,3 +57,30 @@ const loadList = async (opciones, filter) => {
     opciones = await Promise.all(promises);
     return opciones;
 };
+
+
+function Getselect() {
+    // Obtener los elementos select
+    const select1 = document.getElementById('categoria');
+    const select2 = document.getElementById('opcion');
+
+    // Configurar los valores seleccionados en los elementos select
+    const storedSelect1Value = localStorage.getItem('select1Value');
+    if (storedSelect1Value) {
+        select1.value = storedSelect1Value;
+    }
+
+    const storedSelect2Value = localStorage.getItem('select2Value');
+    if (storedSelect2Value) {
+        select2.value = storedSelect2Value;
+    }
+
+    // Actualizar el valor seleccionado en el objeto localStorage cuando el usuario cambia la selección en un select
+    select1.addEventListener('change', () => {
+        localStorage.setItem('select1Value', select1.value);
+    });
+
+    select2.addEventListener('change', () => {
+        localStorage.setItem('select2Value', select2.value);
+    });
+}
