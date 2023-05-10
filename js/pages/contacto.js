@@ -27,7 +27,9 @@ export const validarFormulario = () => {
                 error = true;
             }
         });
-        if(!error){
+        if (!error) {
+            //enviarMailFormsPree();
+            enviarMailTo();
             Swal.fire(
                 'Felicitaciones',
                 'Usted cargo su receta correctamente',
@@ -36,4 +38,34 @@ export const validarFormulario = () => {
             $('#formulario').get(0).reset();
         }
     });
+}
+
+const enviarMailFormsPree = async () => {
+    const form = document.getElementById('formulario');
+    const fd = new FormData(form);
+    fd.append('Agradecimiento','Muchas gracias por enviarnos tu receta');
+    const response = await fetch('https://formspree.io/f/xnqywwbo', {
+        method: 'POST',
+        body: fd,
+        headers: {
+            Accept: 'application/json'
+        }
+    });
+
+    if (response.ok) {
+        console.log('Mensaje enviado');
+    } else {
+        console.log('Error al enviar el mensaje')
+    }
+
+}
+
+const enviarMailTo = () => {
+    const form = document.getElementById('formulario');
+    const fd = new FormData(form);
+    const sendMail = document.getElementById('emailA');
+    sendMail.setAttribute(
+        'href',
+        `mailto:profeblasi@gmail.com?subject=${fd.get('receta')}&body=${fd.get('descripcion')}`);
+    sendMail.click();
 }
