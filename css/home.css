@@ -94,17 +94,17 @@
     rgba(0, 0, 0, 0.5),
     rgba(0, 0, 0, 0.5)
   ), url("/Imagenes/home_recetas.jpg");
-  height: auto;
+  width: auto;
   color: white;
   text-align: justify;
   margin: 50px 0;
 }
 
 .container-recetas p {
-  margin: 20px;
+  margin: 20%;
   font-family: 'Amaranth', sans-serif;
   display: block;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -114,12 +114,6 @@
     justify-content: space-between;
     align-items: center;
     height: auto;
-  }
-
-  .container-recetas p {
-    margin: 20px;
-    width: 50%;
-    font-family: 'Amaranth', sans-serif;
   }
 
   .container-recetas img {
@@ -154,6 +148,3 @@
   width: 100%;
   margin: 10px;
 }
-
-
-

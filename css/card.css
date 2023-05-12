@@ -96,10 +96,6 @@
   }
   
   @media (max-width: 800px) {
-    /*.card-container {
-      display: block;
-    }*/
-  
     .card-container article{
       width: 90%;
     }
