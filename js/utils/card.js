@@ -65,38 +65,8 @@ export const card = (image, imageAlt, title, instructions, id, ingredientes) => 
         }
     });
     return card;
-    /*cardLink.on('click', async function (e) {
-        e.preventDefault();
-        let mainContainer = $('#seccion-receta');
-        if (mainContainer.length === 0) {
-            mainContainer = $('.hero');
-          } 
-        mainContainer.empty();
-        mainContainer.append(card2(title, image, instructions));
-        const contenedorUl = document.querySelector('.list-ingredientes');
-        const tablaIngredientes = document.createElement('table');
-        tablaIngredientes.classList.add('tabla-ingredientes');
-        const encabezadoFila = tablaIngredientes.insertRow();
-        const encabezadoColumna1 = encabezadoFila.insertCell();
-        const encabezadoColumna2 = encabezadoFila.insertCell();
-        encabezadoColumna1.textContent = 'Cantidad';
-        encabezadoColumna2.textContent = 'Ingrediente';
-        for (let index = 0; index < 20; index++) {
-            const cantidad = ingredientes[20 + index];
-            const ingrediente = ingredientes[index];
-            if (cantidad && ingrediente) {
-                const fila = tablaIngredientes.insertRow();
-                const columna1 = fila.insertCell();
-                const columna2 = fila.insertCell();
-                columna1.textContent = cantidad;
-                columna2.textContent = await translate(ingrediente);
-            }
-        }
-        contenedorUl.appendChild(tablaIngredientes);
-    });
-    return card;*/
-
 };
+
 
 const card2 = (titulo, image, instructions) => {
     return `
@@ -116,6 +86,7 @@ const card2 = (titulo, image, instructions) => {
                 <p>${instructions}</p>
             </div>
         </section>
+        <button id="btn-desplegar">↓</button>
     </section>
     `
 }
@@ -141,5 +112,3 @@ export const listCardContainer = (data) => {
         });
     });
 }
-
-
