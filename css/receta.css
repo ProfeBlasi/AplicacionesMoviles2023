@@ -22,7 +22,6 @@
   padding: 2%;
   margin: 0% 2% 4% 2%;
   display: flex;
-  justify-content: space-between;
   background-color: rgba(222, 184, 135, 0.66);
   border: solid 3px black;
   text-align: center;
@@ -30,8 +29,8 @@
 
 
 .seccion2-div-ingredientes{
-  margin-right: 2%;
   padding: 2%;
+  min-width: 20%;
 }
 
 .seccion2-div-instrucciones{
