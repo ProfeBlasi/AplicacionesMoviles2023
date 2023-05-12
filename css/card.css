@@ -5,7 +5,18 @@
   }
   
   .card-container {
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .container_favorites .card-container {
+    display: unset;
+  }
+
+  .container_favorites .card-container img {
+    display: block;
+    margin: 20px auto;
   }
 
   .card-container h2{
@@ -13,11 +24,6 @@
     font-size: 250%;
     margin: 1%;
     font-family: 'Josefin Slab', serif;
-  }
-
-  .card-container img{
-    margin: 10px;
-
   }
 
   .card-container article{
