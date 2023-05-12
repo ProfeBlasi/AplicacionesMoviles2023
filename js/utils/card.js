@@ -54,6 +54,22 @@ export const card = (image, imageAlt, title, instructions, id, ingredientes) => 
         let mainContainer = $('#seccion-receta');
         if (mainContainer.length === 0) {
             mainContainer = $('.hero');
+        }
+        mainContainer.empty();
+        mainContainer.append(card2(title, image, instructions));
+        const contenedorUl = document.querySelector('.list-ingredientes');
+        for (let index = 0; index < 20; index++) {
+            const elementoLi = document.createElement('li');
+            elementoLi.textContent = ingredientes[20 + index] + ' ' + ' ' + await translate(ingredientes[index]);
+            contenedorUl.appendChild(elementoLi);
+        }
+    });
+    return card;
+    /*cardLink.on('click', async function (e) {
+        e.preventDefault();
+        let mainContainer = $('#seccion-receta');
+        if (mainContainer.length === 0) {
+            mainContainer = $('.hero');
           } 
         mainContainer.empty();
         mainContainer.append(card2(title, image, instructions));
@@ -78,7 +94,7 @@ export const card = (image, imageAlt, title, instructions, id, ingredientes) => 
         }
         contenedorUl.appendChild(tablaIngredientes);
     });
-    return card;
+    return card;*/
 
 };
 
@@ -90,12 +106,12 @@ const card2 = (titulo, image, instructions) => {
             <img src=${image} alt="Imagen de"+${image} class="img-receta">
         </section>
         <section id="seccion-2">
-            <div>
+            <div class="seccion2-div-ingredientes">
                 <h3>Ingredientes: </h3>
                 <ul class="list-ingredientes">
                 </ul>
             </div>
-            <div>
+            <div class="seccion2-div-instrucciones">
                 <h3>Instrucciones</h3>
                 <p>${instructions}</p>
             </div>
@@ -125,3 +141,5 @@ export const listCardContainer = (data) => {
         });
     });
 }
+
+

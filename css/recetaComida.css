@@ -11,16 +11,16 @@
   
   label {
     margin-bottom: 5px;
-    font-size: 130%;
-    font-family: 'Poppins', sans-serif;
+    font-size: 150%;
+    font-family: 'Josefin Slab', serif;
   }
   
   select {
     padding: 10px;
     border-radius: 5px;
     border: none;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
+    font-size: 120%;
+    font-family: 'Josefin Slab', serif;
     width: 100%;
   }
   
