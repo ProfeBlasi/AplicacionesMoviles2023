@@ -10,15 +10,6 @@
     justify-content: center;
   }
 
-  .container_favorites .card-container {
-    display: unset;
-  }
-
-  .container_favorites .card-container img {
-    display: block;
-    margin: 20px auto;
-  }
-
   .card-container h2{
     text-align: center;
     font-size: 250%;

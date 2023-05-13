@@ -40,8 +40,10 @@ export const viewFavorites = () => {
     const cardContainer = $('.card-container');
     if (favorites.length === 0) {
         const h2 = $('<h2>').text('Todavia no probaste nuestras recetas???');
-        const img = $('<img>').attr('src', '../Imagenes/boySorprendido.jpg');
-        cardContainer.append(h2, img);
+        const card = $('<div>').addClass('cardHome');
+        const imageDiv = $('<img>').attr('src', '../Imagenes/boySorprendido.jpg');
+        card.append(h2, imageDiv);
+        cardContainer.append(card);
     } else {
         var h2 = $('<h2>').text('Tus favoritos');
         var divH2 = $('<div>').addClass('container-favoritos');

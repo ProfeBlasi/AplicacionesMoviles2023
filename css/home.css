@@ -123,21 +123,21 @@
   }
 }
 
-.container_delivery, .container-carrousel {
+.container_delivery, .container-carrousel, .cardHome {
   position: relative;
   margin: 0 auto;
   width: 90%;
   max-width: 800px;
 }
 
-.container_delivery h2, .container-carrousel h2 {
+.container_delivery h2, .container-carrousel h2, .cardHome h2 {
   text-align: center;
   font-size: 350%;
   font-family: 'Josefin Slab', serif;
   margin: 3%;
 }
 
-.container_delivery img {
+.container_delivery img, .cardHome img {
   width: 100%;
   height: auto;
   display: block;
